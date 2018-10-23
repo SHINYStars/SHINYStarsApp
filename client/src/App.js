@@ -7,6 +7,7 @@ import Contact from  './pages/Contact/Contact';
 import DonateMoney from  './pages/Donate/DonateMoney';
 import DonateInKind from  './pages/Donate/DonateInKind';
 import Volunteer from './pages/Volunteer/Volunteer';
+import Organization from './pages/Organization/Organization';
 import Volunteer from './pages/User/User';
 
 class App extends Component {
@@ -21,6 +22,7 @@ class App extends Component {
           <Route exact path="/volunteer" component={Volunteer} />
           <Route exact path="/donatemoney" component={DonateMoney} />
           <Route exact path="/donateinkind" component={DonateInKind} />
+          <Route exact path="/organization" component={Organization} />
           <Route exact path="/user" component={User} />
         </Switch>
       </div>
