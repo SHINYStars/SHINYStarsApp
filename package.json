@@ -10,7 +10,8 @@
     "morgan": "^1.9.1",
     "nodemon": "^1.18.4",
     "passport": "^0.4.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "seed": "^0.4.4"
   },
   "devDependencies": {
     "concurrently": "^4.0.0"
@@ -23,6 +24,7 @@
     "add": "git add -f client/build && yarn run commit",
     "commit": "git commit -m \"deploy\" && yarn run push",
     "push": "git push -f heroku deploy:master && yarn run master",
+    "seed": "node scripts/seedDB.js",
     "master": "git checkout master && yarn run delete",
     "delete": "git branch -D deploy",
     "start": "concurrently --kill-others-on-fail \"yarn run server\" \"yarn run client\"",
