@@ -4,6 +4,9 @@ const seedDb = require('./models/seed').seedDb;
 // Initialize Express
 const express = require('express');
 const app = express();
+var session = require("express-session");
+// Requiring passport as we've configured it
+var passport = require("./config/passport");
 
 // Import routes
 const router = require('./router');
@@ -41,8 +44,15 @@ class App {
     }
     initMiddleware() {
         app.use(cors());
+        app.use(bodyParser.urlencoded({ extended: true }));
         app.use(bodyParser.json({ type: '*/*'})); // Type indicates ALL header types OK
         app.use(express.static(path.resolve(__dirname, '..', '..', 'public'))) // Serve files in our Rect app public directory
+        
+        // We need to use sessions to keep track of our user's login status
+        app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+        app.use(passport.initialize());
+        app.use(passport.session());
+
         router(app);
 
         if (process.env.NODE_ENV === 'production') 
