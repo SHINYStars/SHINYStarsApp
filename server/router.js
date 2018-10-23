@@ -10,6 +10,11 @@ module.exports = function(app) {
     app.get('/login',function(req,res,next){
         res.json(req.params);
     });
+
+    app.get('/user', function(req, res, next){
+        res.sendFile(path.join(__dirname, "/.."))
+    });
+    
    
     // Wire up API routes here!
 }
