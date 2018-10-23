@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home/Home';
 import Login from  './pages/Login/Login';
@@ -8,7 +8,7 @@ import DonateMoney from  './pages/Donate/DonateMoney';
 import DonateInKind from  './pages/Donate/DonateInKind';
 import Volunteer from './pages/Volunteer/Volunteer';
 import Organization from './pages/Organization/Organization';
-import Volunteer from './pages/User/User';
+import User from './pages/User/User';
 
 class App extends Component {
   render() {
