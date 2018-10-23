@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Volunteer extends Component {
+class User extends Component {
     render() {
       return (
         <div className="container" id="user">
@@ -11,4 +11,4 @@ class Volunteer extends Component {
     }
   }
   
-  export default Volunteer;
+  export default User;

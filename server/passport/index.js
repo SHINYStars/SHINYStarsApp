@@ -1,7 +1,6 @@
 var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
-
-var db = require("../models/user");
+var User = require("../database/models/user");
 
 // called on login, saves the id to session req.session.passport.user = {id:'..'}
 passport.serializeUser((user, done) => {
