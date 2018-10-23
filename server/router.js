@@ -11,6 +11,10 @@ module.exports = function (app) {
         res.json(req.params);
     });
 
+    app.get('/user', function(req, res, next){
+        res.sendFile(path.join(__dirname, "/.."))
+    });
+    
     // Wire up API routes here!
     
     //Organization Registration
