@@ -12,8 +12,6 @@ export default {
 
   //Registers new organization
   newOrganization: function (organization) {
-    // return axios.post("api/organization", organization);
-    return "ok".json({ ok: "ok" });
+    return axios.post("/api/organization/signup", organization)
   }
-
 };

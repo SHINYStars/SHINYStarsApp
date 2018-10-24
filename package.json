@@ -12,7 +12,7 @@
     "nodemon": "^1.18.4",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "seed": "^0.4.4",
+    "seed": "^0.4.4"
   },
   "devDependencies": {
     "concurrently": "^4.0.0"
