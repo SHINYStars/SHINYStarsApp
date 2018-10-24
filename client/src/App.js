@@ -8,7 +8,7 @@ import DonateMoney from  './pages/Donate/DonateMoney';
 import DonateInKind from  './pages/Donate/DonateInKind';
 import Volunteer from './pages/Volunteer/Volunteer';
 import Organization from './pages/Organization/Organization';
-import Volunteer from './pages/User/User';
+import User from './pages/User/User';
 
 class App extends Component {
   render() {
