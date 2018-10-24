@@ -1,18 +1,23 @@
-import React, { Component } from 'react';
-import {Button,Icon} from 'react-materialize';
+import React, { Component } from "react";
+import { Col, CardPanel, Row, Input } from "react-materialize";
 
 class Volunteer extends Component {
-    render() {
-      return (
-        <div className="container" id="volunteer">
+  render() {
+    return (
+      <div className="container" id="volunteer">
         <form>
-        <Button waves="light">
-          <Icon>thumb_up</Icon>
-        </Button>
+          <Col s={12} m={5}>
+            <CardPanel className="lighten-4 black-text">
+              <Input s={6} label="First Name" />
+              <Input s={6} label="Last Name" />
+              <Input type="password" label="password" s={12} />
+              <Input type="email" label="Email" s={12} />
+            </CardPanel>
+          </Col>
         </form>
       </div>
-        );
-    }
+    );
   }
-  
-  export default Volunteer;
+}
+
+export default Volunteer;

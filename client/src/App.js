@@ -9,6 +9,7 @@ import DonateInKind from  './pages/Donate/DonateInKind';
 import Volunteer from './pages/Volunteer/Volunteer';
 import Organization from './pages/Organization/Organization';
 import User from './pages/User/User';
+import Register from './pages/Register/Register'
 
 class App extends Component {
   render() {
@@ -24,6 +25,7 @@ class App extends Component {
           <Route exact path="/donateinkind" component={DonateInKind} />
           <Route exact path="/organization" component={Organization} />
           <Route exact path="/user" component={User} />
+          <Route exact path="/register" component={Register} />
         </Switch>
       </div>
     </Router>
