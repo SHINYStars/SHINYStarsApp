@@ -1,6 +1,36 @@
-body {
-    /*background-color: #eee;*/
+
+.shinystars-app{
     font-family: 'Roboto', sans-serif;
+    color:#0065A3;
+    margin:10px;
+}
+
+nav{
+    line-height:100px;
+    height: 100px;
+    color:#0065A3;
+    background-color:#fff;
+    border:0px;
+    box-shadow: none;
+}
+
+nav a,nav ul a,nav .brand-logo{
+    color:#0065A3;
+    background-color:#fff;
+}
+
+.logo-img{
+    /*margin:10px;*/
+}
+
+.btn{
+    background-color:#0065A3; 
+    color:#fff;
+}
+
+.btn:hover,.btn:active,.btn:focus{
+    background-color:#fff; 
+    color:#0065A3;
 }
 
 .logo-color-1 {
@@ -9,10 +39,10 @@ body {
 }
 
 .logo-color-2 {
-    color: #0065A3/*#416F14*/
-    ;
+    color: #0065A3/*#416F14*/;
     font-family: 'Alegreya', serif;
 }
+
 
 .need {
     font-size: 20px;
@@ -26,11 +56,6 @@ body {
     width: 25px;
     border-radius: 35%;
     display: inline-block;
-}
-
-.carousel-item img {
-    width: 100%;
-    height: 50%;
 }
 
 .carousel-indicators .active {
@@ -51,6 +76,10 @@ body {
 
 .target-link {
     margin: 10px;
+}
+
+.login-form .row .col.s12{
+    width:350px;
 }
 
 @media screen and (min-width:400px) {

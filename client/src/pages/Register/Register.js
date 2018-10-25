@@ -5,7 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField'; */
 import axios from "axios";
 import Login from "../Login/Login";
-import { Col, CardPanel, Row, Input } from "react-materialize";
+import { Col, CardPanel } from "react-materialize";
 
 class Register extends Component {
   constructor(props) {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import API from "../../util/API";
+import { Row, Input, Button } from 'react-materialize';
 
 class User extends Component {
 
@@ -29,25 +30,20 @@ class User extends Component {
   }
 
   handleChange = event => {
+    const { name, value } = event.target;
     this.setState({
-      [event.target.id]: event.target.value
+      [name]: value
     });
-  }
-
-  handleSubmit = async event => {
-    event.preventDefault();
-
-    this.setState({ isLoading: true });
-
-    this.setState({ newUser: "test" });
-
-    this.setState({ isLoading: false });
   }
 
 
   handleFormSubmit = event => {
     event.preventDefault();
+    console.log(this.state.firstName);
+
     if (this.state.firstName && this.state.lastName) {
+      console.log(this.state.firstName);
+
       API.user({
         firstName: this.state.firstName,
         lastName: this.state.lastName,
@@ -62,60 +58,69 @@ class User extends Component {
         .catch(err => console.log(err));
     }
   };
-    render() {
-      return (
-        <div className="container" id="user">
-        <form onSubmit={this.handleSubmit}>
-          <input name="firstName" placeholder="Enter your First Name"
-                 type="string"
-                 defaultValue={this.state.firstName}
-                 onChange={this.handleChange}
-                 />
-          <input name="lastName" placeholder="Enter your Last Name" 
-                 type="string"
-                 defaultValue={this.state.password}
-                 onChange={this.handleChange}
-                 />
-          <input name="email" placeholder="Enter your email"
-                 type="string"
-                 defaultValue={this.state.email}
-                 onChange={this.handleChange}
-                 />
-          <input name="password" placeholder="Enter your password" 
-                 type="string"
-                 defaultValue={this.state.password}
-                 onChange={this.handleChange}
-                 />
-          <input name="confirmPassword" placeholder="Re-nter your password"
-                 type="string"
-                 defaultValue={this.state.confirmPassword}
-                 onChange={this.handleChange}
-                 />
-          <input name="phonenumber1" placeholder="Enter your phone number"
-                 type="string"
-                 defaultValue={this.state.phonenumber1}
-                 onChange={this.handleChange}
-                 />
-          <input name="phonenumber2" placeholder="Enter additional phone number"
-                 type="string"
-                 defaultValue={this.state.phonenumber2}
-                 onChange={this.handleChange} />
+  render() {
+    return (
 
-         
+      <div className="container">
+      <Row>
+          <div className="section">
+            <form className="col s12 ">
+              <Row>
+                <Input placeholder="First Name" s={6} label="First Name"
+                  type="string" name="firstName"
+                  defaultValue={this.state.firstName}
+                  onChange={this.handleChange} ></Input>
 
-          <button
-                // disabled={!this.validateForm()}
-                onClick={this.handleFormSubmit}
-
-              >
-                Submit
-              </button>
-
-        </form>
+                <Input placeholder="Last Name" s={6} label="Last Name"
+                  type="string" name="lastName"
+                  defaultValue={this.state.password}
+                  onChange={this.handleChange}
+                />
+              </Row>
+              <Row>
+                <Input placeholder="Email" s={12} label="Email"
+                  type="string" name="email"
+                  defaultValue={this.state.email}
+                  onChange={this.handleChange}
+                />
+              </Row>
+              <Row>
+                <Input placeholder="Password" s={6} label="Password"
+                  type="string" name="password"
+                  defaultValue={this.state.password}
+                  onChange={this.handleChange}
+                />
+                <Input placeholder="Confirm Password" s={6} label="Confirm Password"
+                  type="string" name="confirmPassword"
+                  defaultValue={this.state.confirmPassword}
+                  onChange={this.handleChange}
+                />
+              </Row>
+              <Row>
+                <Input placeholder="Phone Number" s={6} label="Phone Number "
+                  type="string" name="phonenumber1"
+                  defaultValue={this.state.phonenumber1}
+                  onChange={this.handleChange}
+                />
+                <Input placeholder="Mobile Number" s={6} label="Mobile Number "
+                  type="string" name="phonenumber2"
+                  defaultValue={this.state.phonenumber2}
+                  onChange={this.handleChange} />
+              </Row>
+              <Row>
+                <Button
+                  // disabled={!this.validateForm()}
+                  onClick={this.handleFormSubmit}>
+                  Submit
+              </Button>
+              </Row>
+            </form>
+        </div>
+      </Row>
       </div>
     );
   }
-  
+
 }
 
 export default User;
