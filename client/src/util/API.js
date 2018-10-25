@@ -7,12 +7,10 @@ export default {
   },
 
   user: function(user){
-    console.log("user signup");
     return axios.post("/api/user/signup",user)
   },
 
   getUser: function(){
-    console.log("user");
     return axios.get("/api/user/");
   },
   

@@ -35,11 +35,7 @@ class Login extends Component {
                 console.log('login response: ')
                 console.log(response)
                 if (response.status === 200) {
-                    // update App.js state
-                    this.props.updateUser({
-                        loggedIn: true,
-                        email: response.data.email
-                    })
+                    
                     // update the state to redirect to home
                     this.setState({
                         redirectTo: '/'
