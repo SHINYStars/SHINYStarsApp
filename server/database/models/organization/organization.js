@@ -9,12 +9,12 @@ const organizationSchema = new Schema({
 
     website: {
         type: String,
-        required: true
+        required: false
     },
 
     address1: {
         type: String,
-        required: false
+        required: true
     },
 
     address2: {
@@ -24,27 +24,27 @@ const organizationSchema = new Schema({
 
     city: {
         type: String,
-        required: false,
+        required: true,
     },
 
     state: {
         type: String,
-        required: false,
+        required: true,
     },
 
     country: {
         type: String,
-        required: false,
+        required: true,
     },
 
     zip: {
         type: String,
-        required: false,
+        required: true,
     },
 
     phoneNumber: {
         type: String,
-        required: false,
+        required: true,
     },
 
     email: {
