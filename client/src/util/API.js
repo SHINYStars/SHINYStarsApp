@@ -10,6 +10,11 @@ export default {
     console.log("user signup");
     return axios.post("/api/user/signup",user)
   },
+
+  getUser: function(){
+    console.log("user");
+    return axios.get("/api/user/");
+  },
   
   //Registers new organization
   newOrganization: function (organization) {

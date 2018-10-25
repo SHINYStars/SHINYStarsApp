@@ -9,13 +9,56 @@ import DonateInKind from './pages/Donate/DonateInKind';
 import Volunteer from './pages/Volunteer/Volunteer';
 import Organization from './pages/Organization/Organization';
 import User from './pages/User/User';
+import API from './util/API';
+import { request } from 'https';
 
 class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      loggedIn: false,
+      email: null
+    }
+
+    this.getUser = this.getUser.bind(this)
+    this.componentDidMount = this.componentDidMount.bind(this)
+    this.updateUser = this.updateUser.bind(this)
+  }
+
+  componentDidMount() {
+    this.getUser()
+  }
+
+  updateUser (userObject) {
+    this.setState(userObject)
+  }
+
+  getUser() {
+    console.log(request);
+    API.getUser().then(response => {
+      console.log('Get user response: ')
+      console.log(response.data)
+      if (response.data.user) {
+        console.log('Get User: There is a user saved in the server session: ')
+
+        this.setState({
+          loggedIn: true,
+          email: response.data.user.email
+        })
+      } else {
+        console.log('Get user: no user');
+        this.setState({
+          loggedIn: false,
+          email: null
+        })
+      }
+    })
+  }
 
   render() {
     return (
       <div className="shinystars-app">
-                <Header />
+                <Header email={this.state.email}/>
         <Router>
 
           <Switch>

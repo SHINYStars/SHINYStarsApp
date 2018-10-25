@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import { CardPanel, Col, Input, Button } from 'react-materialize';
 import API from "../../util/API";
 
 class Login extends Component {
@@ -18,7 +19,7 @@ class Login extends Component {
     handleChange(event) {
         const { name, value } = event.target;
         this.setState({
-          [name]: value
+            [name]: value
         });
     }
 
@@ -56,52 +57,30 @@ class Login extends Component {
             return <Redirect to={{ pathname: this.state.redirectTo }} />
         } else {
             return (
-                <div className="login-form">
-                    <div className="row">
-                        <div className="col s12 z-depth-4 card-panel">
-                            <form>
+                <div className="container" id="login">
+                    <form>
+                        <Col s={12} m={5}>
+                            <CardPanel>
                                 <h4>Login</h4>
-
-                                <div className="form-group">
-                                    <div className="col-1 col-ml-auto">
-                                        <label className="form-label" htmlFor="email">Email</label>
-                                    </div>
-                                    <div className="col-3 col-mr-auto">
-                                        <input className="form-input"
-                                            type="text"
-                                            id="email"
-                                            name="email"
-                                            placeholder="Email"
-                                            value={this.state.email}
-                                            onChange={this.handleChange}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group">
-                                    <div className="col-1 col-ml-auto">
-                                        <label className="form-label" htmlFor="password">Password: </label>
-                                    </div>
-                                    <div className="col-3 col-mr-auto">
-                                        <input className="form-input"
-                                            placeholder="password"
-                                            type="password"
-                                            name="password"
-                                            value={this.state.password}
-                                            onChange={this.handleChange}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group ">
-                                    <div className="col-7"></div>
-                                    <button
-                                        className="btn btn-primary col-1 col-mr-auto"
-                                        onClick={this.handleSubmit}
-                                        type="submit">Login</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                                <Input s={6} label="Email"
+                                    type="text"
+                                    id="email"
+                                    name="email"
+                                    placeholder="Email"
+                                    value={this.state.email}
+                                    onChange={this.handleChange} />
+                                <Input s={6} label="Password"
+                                    placeholder="Password"
+                                    type="password"
+                                    name="password"
+                                    value={this.state.password}
+                                    onChange={this.handleChange} />
+                                <Button waves='light' onClick={this.handleSubmit}>Login</Button>
+                            </CardPanel>
+                        </Col>
+                    </form>
                 </div>
+
             )
         }
     }
