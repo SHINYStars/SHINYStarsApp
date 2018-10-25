@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Col, CardPanel, Row, Input } from "react-materialize";
+import { Col, CardPanel, Input, Button, Icon } from "react-materialize";
 
 class Volunteer extends Component {
   render() {
@@ -7,11 +7,14 @@ class Volunteer extends Component {
       <div className="container" id="volunteer">
         <form>
           <Col s={12} m={5}>
-            <CardPanel className="lighten-4 black-text">
+            <CardPanel className="grey lighten-2 black-text">
+              <h4>Register to Volunteer</h4>
               <Input s={6} label="First Name" />
               <Input s={6} label="Last Name" />
-              <Input type="password" label="password" s={12} />
               <Input type="email" label="Email" s={12} />
+              <Input type="password" label="Password" s={12} />
+              <Input type="password" label="Confirm Password" s={12} />
+              <Button className="grey lighten-2 black-text" waves='light'>Submit<Icon right>thumb_up</Icon></Button>
             </CardPanel>
           </Col>
         </form>
