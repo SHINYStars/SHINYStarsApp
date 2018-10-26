@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import API from "../../util/API";
 import SweetAlert from 'sweetalert-react';
-import 'sweetalert/dist/sweetalert.css';
 import { Col,CardPanel, Input, Button } from 'react-materialize';
 
 class User extends Component {
@@ -14,7 +13,7 @@ class User extends Component {
       password: "",
       phonenumber1: "",
       phonenumber2: "",
-      organization: (this.props.match.params.org)?1:0,
+      organization: (this.props.match.params.org===1)?1:0,
       confirmSignup: false
     };
   
@@ -36,11 +35,7 @@ class User extends Component {
     });
   }
 
-  user = () => {
-    this.setState({
-        confirmSignUp: true
-    })
-}
+
 
   handleFormSubmit = event => {
     event.preventDefault();
@@ -57,9 +52,7 @@ class User extends Component {
 
       })
         .then(res => {
-          this.user();
-          if(this.props.match.params.org){
-            console.log(this.props.match.params.org);
+          if(this.props.match.params.org===1){
             window.location.href="/organization/"+res.data._id;
         }
         })
