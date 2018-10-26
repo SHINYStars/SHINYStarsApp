@@ -11,7 +11,6 @@ const SSCarousel = () => (
       '/images/slides/AdobeStock_128736245.jpeg'
     ]}
   />
-
 );
 
 export default SSCarousel;

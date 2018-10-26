@@ -67,8 +67,8 @@ class App extends Component {
             <Route exact path="/contact" component={Contact} />
             <Route exact path="/volunteer" component={Volunteer} />
             <Route exact path="/donateinkind" component={DonateInKind} />
-            <Route exact path="/organization" component={Organization} />
-            <Route exact path="/user" component={User} />
+            <Route exact path="/organization/:user" component={Organization} />
+            <Route exact path="/signup/:org" component={User} />
           </Switch>
         </Router>
       </div>

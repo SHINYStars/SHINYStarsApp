@@ -58,14 +58,14 @@ class Login extends Component {
                         <Col s={12} m={5}>
                             <CardPanel>
                                 <h4>Login</h4>
-                                <Input s={6} label="Email"
+                                <Input s={6} 
                                     type="text"
                                     id="email"
                                     name="email"
                                     placeholder="Email"
                                     value={this.state.email}
                                     onChange={this.handleChange} />
-                                <Input s={6} label="Password"
+                                <Input s={6} 
                                     placeholder="Password"
                                     type="password"
                                     name="password"

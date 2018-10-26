@@ -15,7 +15,7 @@ class User extends Component {
       password: "",
       phonenumber1: "",
       phonenumber2: "",
-      organization: 0
+      organization: (this.props.match.params.org)?1:0
     };
   }
 
@@ -36,6 +36,11 @@ class User extends Component {
     });
   }
 
+  user = () => {
+    this.setState({
+        confirmSignUp: true
+    })
+}
 
   handleFormSubmit = event => {
     event.preventDefault();
@@ -54,7 +59,13 @@ class User extends Component {
         organization: this.state.organization
 
       })
-        .then(res => this.user())
+        .then(res => {
+          this.user();
+          if(this.props.match.params.org){
+            console.log(this.props.match.params.org);
+            window.location.href="/organization/"+res.data._id;
+        }
+        })
         .catch(err => console.log(err));
     }
   };
@@ -106,7 +117,7 @@ class User extends Component {
                 onChange={this.handleChange} />
 
               <Button
-                // disabled={!this.validateForm()}
+                 disabled={!this.validateForm()}
                 onClick={this.handleFormSubmit}>
                 Submit
               </Button>
