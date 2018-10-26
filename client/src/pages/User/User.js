@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
+import { Input, FormBtn } from "../../components/Form";
 import API from "../../util/API";
+import SweetAlert from 'sweetalert-react';
+import 'sweetalert/dist/sweetalert.css';
 import { Col,CardPanel, Input, Button } from 'react-materialize';
 
 class User extends Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
+    state = {
       isLoading: false,
       firstName: "",
       lastName: "",
@@ -16,8 +16,9 @@ class User extends Component {
       phonenumber1: "",
       phonenumber2: "",
       organization: (this.props.match.params.org)?1:0
+      confirmSignup: false
     };
-  }
+  
 
   validateForm() {
     return (
@@ -44,11 +45,8 @@ class User extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    console.log(this.state.firstName);
-
-    if (this.state.firstName && this.state.lastName) {
-      console.log(this.state.firstName);
-
+    
+    if (this.validateForm()) {
       API.user({
         firstName: this.state.firstName,
         lastName: this.state.lastName,
@@ -73,6 +71,7 @@ class User extends Component {
     return (
 
       <div className="container" id="user">
+          
         <form>
           <Col s={12} m={5}>
             <CardPanel>
@@ -119,8 +118,17 @@ class User extends Component {
               <Button
                  disabled={!this.validateForm()}
                 onClick={this.handleFormSubmit}>
-                Submit
-              </Button>
+               Register User</Button>
+
+              <SweetAlert
+                show = {this.state.confirmSignup}
+                type = 'success'
+                title = 'Registration Complete!'
+                text = 'Thanks for Registering!'
+                onConfirm = {() => this.setState({
+                  confirmSignup: false
+                })}
+                />
             </CardPanel>
           </Col>
         </form>
