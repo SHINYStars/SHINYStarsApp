@@ -14,7 +14,7 @@ class Home extends Component {
         event.preventDefault();
         console.log('handleSubmit');
 
-        window.location.href="/signup";
+        window.location.href="/signup/0";
     }
 
     handleSearch(event){
@@ -24,7 +24,7 @@ class Home extends Component {
 
     render() {
         return (
-            <div className="" id="login">
+            <div className="" id="home">
                     <CardPanel>
                         <div className="overlay">
                         <Input type="text" placeholder="City, State"></Input>
