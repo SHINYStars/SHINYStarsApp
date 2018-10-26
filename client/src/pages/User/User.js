@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Input, FormBtn } from "../../components/Form";
 import API from "../../util/API";
 import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css';
@@ -15,7 +14,7 @@ class User extends Component {
       password: "",
       phonenumber1: "",
       phonenumber2: "",
-      organization: (this.props.match.params.org)?1:0
+      organization: (this.props.match.params.org)?1:0,
       confirmSignup: false
     };
   

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Button, Card, Col, Input, Preloader, Row, Icon } from 'react-materialize';
-import SweetAlert from 'sweetalert-react'
+/* import { Button, Card, Col, Input, Preloader, Row, Icon } from 'react-materialize';
+import SweetAlert from 'sweetalert-react' */
 import 'sweetalert/dist/sweetalert.css';
 import './Contact.css';
 
