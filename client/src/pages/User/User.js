@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
+import { Input, FormBtn } from "../../components/Form";
 import API from "../../util/API";
-import { Row, Input, Button } from 'react-materialize';
+import SweetAlert from 'sweetalert-react';
+import 'sweetalert/dist/sweetalert.css';
 
 class User extends Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
+    state = {
       isLoading: false,
       firstName: "",
       lastName: "",
@@ -15,9 +14,10 @@ class User extends Component {
       password: "",
       phonenumber1: "",
       phonenumber2: "",
-      organization: 0
+      organization: 0,
+      confirmSignup: false
     };
-  }
+  
 
   validateForm() {
     return (
@@ -36,14 +36,17 @@ class User extends Component {
     });
   }
 
+  user = () => {
+    this.setState({
+        confirmSignUp: true
+    })
+}
+
 
   handleFormSubmit = event => {
     event.preventDefault();
-    console.log(this.state.firstName);
-
-    if (this.state.firstName && this.state.lastName) {
-      console.log(this.state.firstName);
-
+    
+    if (this.validateForm()) {
       API.user({
         firstName: this.state.firstName,
         lastName: this.state.lastName,
@@ -61,30 +64,25 @@ class User extends Component {
   render() {
     return (
 
-      <div className="container">
-      <Row>
-          <div className="section">
-            <form className="col s12 ">
-              <Row>
+      <div className="container" id="user">
+            <form>
                 <Input placeholder="First Name" s={6} label="First Name"
                   type="string" name="firstName"
                   defaultValue={this.state.firstName}
-                  onChange={this.handleChange} ></Input>
-
+                  onChange={this.handleChange} 
+                />
                 <Input placeholder="Last Name" s={6} label="Last Name"
                   type="string" name="lastName"
                   defaultValue={this.state.password}
                   onChange={this.handleChange}
                 />
-              </Row>
-              <Row>
+              
                 <Input placeholder="Email" s={12} label="Email"
                   type="string" name="email"
                   defaultValue={this.state.email}
                   onChange={this.handleChange}
                 />
-              </Row>
-              <Row>
+              
                 <Input placeholder="Password" s={6} label="Password"
                   type="string" name="password"
                   defaultValue={this.state.password}
@@ -95,8 +93,7 @@ class User extends Component {
                   defaultValue={this.state.confirmPassword}
                   onChange={this.handleChange}
                 />
-              </Row>
-              <Row>
+              
                 <Input placeholder="Phone Number" s={6} label="Phone Number "
                   type="string" name="phonenumber1"
                   defaultValue={this.state.phonenumber1}
@@ -106,17 +103,23 @@ class User extends Component {
                   type="string" name="phonenumber2"
                   defaultValue={this.state.phonenumber2}
                   onChange={this.handleChange} />
-              </Row>
-              <Row>
-                <Button
-                  // disabled={!this.validateForm()}
+              
+                <FormBtn
+                  disabled={!this.validateForm()}
                   onClick={this.handleFormSubmit}>
-                  Submit
-              </Button>
-              </Row>
+                  Register User
+              </FormBtn>
+              <SweetAlert
+                show = {this.state.confirmSignup}
+                type = 'success'
+                title = 'Registration Complete!'
+                text = 'Thanks for Registering!'
+                onConfirm = {() => this.setState({
+                  confirmSignup: false
+                })}
+                />
+
             </form>
-        </div>
-      </Row>
       </div>
     );
   }
