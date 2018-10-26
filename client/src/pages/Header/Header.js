@@ -6,7 +6,6 @@ const Header = (props) => (
     <header>
         <Navbar brand={Img} right>
             <NavItem>{/* <Icon>account_circle</Icon> */}{props.email}</NavItem>
-            {!props.email==""? <NavItem><Icon>search</Icon></NavItem>:""}
         </Navbar>
     </header>
 );

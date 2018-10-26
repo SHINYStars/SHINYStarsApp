@@ -1,3 +1,27 @@
-#login .card-panel{
-    background:url("/images/slides/AdobeStock_107139675.jpeg") no-repeat;
+#login .card-panel {
+    background-image:url("/images/slides/AdobeStock_128736245.jpeg");
+    width: 100%;
+    height: 600px;
+    background-repeat: no-repeat;
+    background-size: cover;
+   /* background-color: aliceblue;*/
+   
 }
+
+#login .card-panel .overlay{
+    background-color: #fff;
+    opacity: 0.94;
+    transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+    text-align: center;
+}
+
+
+@media screen and (max-width: 400px) {
+    #login .card-panel {
+        height: 200px;
+    }
+}
+
+
+
+    

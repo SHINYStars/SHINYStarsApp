@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button ,CardPanel,Col} from 'react-materialize';
+import { Button ,Input,Icon,CardPanel} from 'react-materialize';
 import './Home.css';
 
 class Home extends Component {
@@ -17,16 +17,26 @@ class Home extends Component {
         window.location.href="/signup";
     }
 
+    handleSearch(event){
+        event.preventDefault();
+        console.log('handleSearch');
+    }
+
     render() {
         return (
-            <div className="container" id="login">
-
-                <Col s={12} m={5}>
+            <div className="" id="login">
                     <CardPanel>
-                        <Button onClick={this.handleLogin}>Signup</Button>
+                        <div className="overlay">
+                        <Input type="text" placeholder="City, State"></Input>
+                        <Button onClick={this.handleSearch}><Icon>search</Icon></Button>
+
+                        </div>
+                        
+                    </CardPanel>   
+                    <div className="right">
+                        <Button onClick={this.handleLogin}>Login / Signup</Button>
                         <Button onClick={this.handleNPOLogin}>NPO Signup</Button>
-                    </CardPanel>
-                </Col>
+                        </div>       
             </div>
         );
     }
