@@ -6,9 +6,16 @@ export default {
     return axios.post("/api/auth/login",user);
   },
 
+  logout: function(user) {
+    return axios.post("/api/auth/logout",user);
+  },
+
   user: function(user){
-    console.log("user signup");
     return axios.post("/api/user/signup",user)
+  },
+
+  getUser: function(){
+    return axios.get("/api/user/");
   },
   
   //Registers new organization

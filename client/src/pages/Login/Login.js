@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import { CardPanel, Col, Input, Button } from 'react-materialize';
 import API from "../../util/API";
 
 class Login extends Component {
@@ -18,13 +19,13 @@ class Login extends Component {
     handleChange(event) {
         const { name, value } = event.target;
         this.setState({
-          [name]: value
+            [name]: value
         });
     }
 
     handleSubmit(event) {
-        event.preventDefault()
-        console.log('handleSubmit')
+        event.preventDefault();
+        console.log('handleSubmit', event);
 
         API.login({
             email: this.state.email,
@@ -34,15 +35,11 @@ class Login extends Component {
                 console.log('login response: ')
                 console.log(response)
                 if (response.status === 200) {
-                    // update App.js state
-                    this.props.updateUser({
-                        loggedIn: true,
-                        email: response.data.email
-                    })
+                    
                     // update the state to redirect to home
-                    this.setState({
-                        redirectTo: '/'
-                    })
+                    this.props.handleLogin({
+                        user: response.data.user
+                    });
                 }
             }).catch(error => {
                 console.log('login error: ')
@@ -52,59 +49,39 @@ class Login extends Component {
     }
 
     render() {
-        if (this.state.redirectTo) {
-            return <Redirect to={{ pathname: this.state.redirectTo }} />
-        } else {
+        if (this.props.user) {
+            return <Redirect to="/" />
+        }
             return (
-                <div className="login-form">
-                    <div className="row">
-                        <div className="col s12 z-depth-4 card-panel">
-                            <form>
+                <div className="container" id="login">
+                    <form onSubmit={this.handleSubmit}>
+                        <Col s={12} m={5}>
+                            <CardPanel>
                                 <h4>Login</h4>
+                                <Input s={6} 
+                                    type="text"
+                                    id="email"
+                                    name="email"
+                                    placeholder="Email"
+                                    value={this.state.email}
+                                    onChange={this.handleChange} />
+                                <Input s={6} 
+                                    placeholder="Password"
+                                    type="password"
+                                    name="password"
+                                    value={this.state.password}
+                                    onChange={this.handleChange} />
+                                <Button type="submit">Login</Button>
+                                <a href="/signup/0">Signup</a>&nbsp;&nbsp;
+                                <a href="/signup/1">NPO Signup</a>
 
-                                <div className="form-group">
-                                    <div className="col-1 col-ml-auto">
-                                        <label className="form-label" htmlFor="email">Email</label>
-                                    </div>
-                                    <div className="col-3 col-mr-auto">
-                                        <input className="form-input"
-                                            type="text"
-                                            id="email"
-                                            name="email"
-                                            placeholder="Email"
-                                            value={this.state.email}
-                                            onChange={this.handleChange}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group">
-                                    <div className="col-1 col-ml-auto">
-                                        <label className="form-label" htmlFor="password">Password: </label>
-                                    </div>
-                                    <div className="col-3 col-mr-auto">
-                                        <input className="form-input"
-                                            placeholder="password"
-                                            type="password"
-                                            name="password"
-                                            value={this.state.password}
-                                            onChange={this.handleChange}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group ">
-                                    <div className="col-7"></div>
-                                    <button
-                                        className="btn btn-primary col-1 col-mr-auto"
-                                        onClick={this.handleSubmit}
-                                        type="submit">Login</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                            </CardPanel>
+                        </Col>
+                    </form>
                 </div>
+
             )
         }
-    }
 }
 
 export default Login;

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Input, FormBtn } from "../../components/Form";
+import { Input } from "../../components/Form";
 import API from "../../util/API";
 import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css';
+import { CardPanel,Button } from 'react-materialize';
 
 class Organization extends Component {
     state = {
@@ -69,6 +70,10 @@ class Organization extends Component {
         return (
             <div className="container" id="organization">
                 <form>
+                <CardPanel>
+
+                <h4>NPO Profile</h4>
+
                     <Input
                         value={this.state.orgName}
                         onChange={this.handleInputChange}
@@ -119,8 +124,10 @@ class Organization extends Component {
                         onChange={this.handleInputChange}
                         name="email"
                         placeholder="E-Mail Address*" />
+                        <div>
                     <span><i>*required field</i></span>
-                    <FormBtn
+                    </div>
+                    <Button
                         disabled={!(this.state.orgName &&
                             this.state.website &&
                             this.state.address1 &&
@@ -131,8 +138,8 @@ class Organization extends Component {
                             this.state.phoneNumber &&
                             this.state.email)}
                         onClick={this.handleFormSubmit}>
-                        Register Organization
-                    </FormBtn>
+                        Save</Button>
+                        <a href="/login">Login</a>
                     <SweetAlert
                         show = {this.state.confirmSignUp}
                         type = 'success'
@@ -142,6 +149,7 @@ class Organization extends Component {
                             confirmSignUp: false
                         })}
                     />
+                                    </CardPanel>
                 </form>
             </div>
         );

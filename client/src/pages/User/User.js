@@ -1,23 +1,24 @@
 import React, { Component } from 'react';
 import API from "../../util/API";
-import { Row, Input, Button } from 'react-materialize';
+import SweetAlert from 'sweetalert-react';
+import 'sweetalert/dist/sweetalert.css';
+import { Col, CardPanel, Input, Button } from 'react-materialize';
 
 class User extends Component {
 
-  constructor(props) {
-    super(props);
+  state = {
+    isLoading: false,
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    phonenumber1: "",
+    phonenumber2: "",
+    organization: (this.props.match.params.org === 1) ? 1 : 0,
+    confirmUserSignup: false,
+    error: false
+  };
 
-    this.state = {
-      isLoading: false,
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      phonenumber1: "",
-      phonenumber2: "",
-      organization: 0
-    };
-  }
 
   validateForm() {
     return (
@@ -36,14 +37,22 @@ class User extends Component {
     });
   }
 
+  confirmRegistration = () => {
+    this.setState({
+      confirmUserSignup: true
+    })
+  }
+
+  confirmError = () => {
+    this.setState({
+      error: true
+    })
+  }
 
   handleFormSubmit = event => {
     event.preventDefault();
-    console.log(this.state.firstName);
 
-    if (this.state.firstName && this.state.lastName) {
-      console.log(this.state.firstName);
-
+    if (this.validateForm()) {
       API.user({
         firstName: this.state.firstName,
         lastName: this.state.lastName,
@@ -54,69 +63,96 @@ class User extends Component {
         organization: this.state.organization
 
       })
-        .then(res => this.user())
+        .then(res => {
+          if (res.data.error) {
+            console.error(res.data.error);
+            this.confirmError();
+          }
+          if (this.props.match.params.org === 1) {
+            window.location.href = "/organization/" + res.data._id;
+          } else {
+            console.log(res.data);
+            this.confirmRegistration();
+          }
+        })
         .catch(err => console.log(err));
     }
   };
   render() {
     return (
 
-      <div className="container">
-      <Row>
-          <div className="section">
-            <form className="col s12 ">
-              <Row>
-                <Input placeholder="First Name" s={6} label="First Name"
-                  type="string" name="firstName"
-                  defaultValue={this.state.firstName}
-                  onChange={this.handleChange} ></Input>
+      <div className="container" id="user">
 
-                <Input placeholder="Last Name" s={6} label="Last Name"
-                  type="string" name="lastName"
-                  defaultValue={this.state.password}
-                  onChange={this.handleChange}
-                />
-              </Row>
-              <Row>
-                <Input placeholder="Email" s={12} label="Email"
-                  type="string" name="email"
-                  defaultValue={this.state.email}
-                  onChange={this.handleChange}
-                />
-              </Row>
-              <Row>
-                <Input placeholder="Password" s={6} label="Password"
-                  type="string" name="password"
-                  defaultValue={this.state.password}
-                  onChange={this.handleChange}
-                />
-                <Input placeholder="Confirm Password" s={6} label="Confirm Password"
-                  type="string" name="confirmPassword"
-                  defaultValue={this.state.confirmPassword}
-                  onChange={this.handleChange}
-                />
-              </Row>
-              <Row>
-                <Input placeholder="Phone Number" s={6} label="Phone Number "
-                  type="string" name="phonenumber1"
-                  defaultValue={this.state.phonenumber1}
-                  onChange={this.handleChange}
-                />
-                <Input placeholder="Mobile Number" s={6} label="Mobile Number "
-                  type="string" name="phonenumber2"
-                  defaultValue={this.state.phonenumber2}
-                  onChange={this.handleChange} />
-              </Row>
-              <Row>
-                <Button
-                  // disabled={!this.validateForm()}
-                  onClick={this.handleFormSubmit}>
-                  Submit
-              </Button>
-              </Row>
-            </form>
-        </div>
-      </Row>
+        <form>
+          <Col s={12} m={5}>
+            <CardPanel>
+              <h4>Signup</h4>
+
+              <Input placeholder="First Name" s={6} label="First Name"
+                type="text" name="firstName"
+                defaultValue={this.state.firstName}
+                onChange={this.handleChange} />
+
+              <Input placeholder="Last Name" s={6} label="Last Name"
+                type="text" name="lastName"
+                defaultValue={this.state.password}
+                onChange={this.handleChange}
+              />
+
+              <Input placeholder="Email" s={12} label="Email"
+                type="text" name="email"
+                defaultValue={this.state.email}
+                onChange={this.handleChange}
+              />
+
+              <Input placeholder="Password" s={6} label="Password"
+                type="password" name="password"
+                defaultValue={this.state.password}
+                onChange={this.handleChange}
+              />
+              <Input placeholder="Confirm Password" s={6} label="Confirm Password"
+                type="password" name="confirmPassword"
+                defaultValue={this.state.confirmPassword}
+                onChange={this.handleChange}
+              />
+
+              <Input placeholder="Phone Number" s={6} label="Phone Number "
+                type="text" name="phonenumber1"
+                defaultValue={this.state.phonenumber1}
+                onChange={this.handleChange}
+              />
+              <Input placeholder="Mobile Number" s={6} label="Mobile Number "
+                type="text" name="phonenumber2"
+                defaultValue={this.state.phonenumber2}
+                onChange={this.handleChange} />
+
+              <Button
+                disabled={!this.validateForm()}
+                onClick={this.handleFormSubmit}>
+                Register User</Button>
+              <a href="/login">Login</a>
+
+              <SweetAlert
+                show={this.state.confirmUserSignup}
+                type='success'
+                title='Registration Complete!'
+                text='Thanks for Registering!'
+                onConfirm={() =>{ this.setState({
+                  confirmUserSignup: false
+                });window.location.href="/login";}}
+              />
+              <SweetAlert
+                show={this.state.error}
+                type='error'
+                title='Error'
+                text='Already registered with this email!'
+                onConfirm={() => {this.setState({
+                  error: false
+                });window.location.href="/login";}}
+              />
+            </CardPanel>
+          </Col>
+        </form>
       </div>
     );
   }

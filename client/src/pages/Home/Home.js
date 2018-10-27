@@ -1,11 +1,43 @@
 import React, { Component } from 'react';
-import SSCarousel from '../SSCarousel/SSCarousel';
+import { Button ,Input,Icon,CardPanel} from 'react-materialize';
+import './Home.css';
 
 class Home extends Component {
 
+    handleNPOSignup(event) {
+        event.preventDefault()
+        console.log('handleNPOLogin')
+        window.location.href="/signup/1";
+    }
+
+    handleLogin(event) {
+        event.preventDefault();
+        console.log('handleSubmit');
+
+        window.location.href="/login";
+    }
+
+    handleSearch(event){
+        event.preventDefault();
+        console.log('handleSearch');
+    }
+
     render() {
         return (
-            <SSCarousel />
+            <div className="" id="home">
+                    <CardPanel>
+                        <div className="overlay">
+                        <Input type="text" placeholder="City, State"></Input>
+                        <Button onClick={this.handleSearch}><Icon>search</Icon></Button>
+
+                        </div>
+                        
+                    </CardPanel>   
+                    <div className="right">
+                        <Button onClick={this.handleLogin}>Login / Signup</Button>
+                        <Button onClick={this.handleNPOSignup}>NPO Signup</Button>
+                        </div>       
+            </div>
         );
     }
 }
