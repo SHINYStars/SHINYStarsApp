@@ -50,6 +50,11 @@ const organizationSchema = new Schema({
     email: {
         type: String,
         required: true
+    },
+
+    userId: {
+        type: String,
+        required: true
     }
 });
 
