@@ -63,7 +63,6 @@ class App extends Component {
       <div className="shinystars-app">
                 <Header user={this.state.user}/>
         <Router>
-
           <Switch>
           <Route exact path="/" component={Home} />
             <Route exact path="/login" component={() => <Login handleLogin={this.updateUser} user={this.state.user} />} />
