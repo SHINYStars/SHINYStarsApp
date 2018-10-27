@@ -71,7 +71,10 @@ class Login extends Component {
                                     name="password"
                                     value={this.state.password}
                                     onChange={this.handleChange} />
-                                <Button waves='light' onClick={this.handleSubmit}>Login</Button>
+                                <Button onClick={this.handleSubmit}>Login</Button>
+                                <a href="/signup/0">Signup</a>&nbsp;&nbsp;
+                                <a href="/signup/1">NPO Signup</a>
+
                             </CardPanel>
                         </Col>
                     </form>
