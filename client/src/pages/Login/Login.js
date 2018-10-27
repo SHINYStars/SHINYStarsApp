@@ -24,8 +24,8 @@ class Login extends Component {
     }
 
     handleSubmit(event) {
-        event.preventDefault()
-        console.log('handleSubmit')
+        event.preventDefault();
+        console.log('handleSubmit', event);
 
         API.login({
             email: this.state.email,
@@ -37,9 +37,9 @@ class Login extends Component {
                 if (response.status === 200) {
                     
                     // update the state to redirect to home
-                    this.setState({
-                        redirectTo: '/'
-                    })
+                    this.props.handleLogin({
+                        user: response.data.user
+                    });
                 }
             }).catch(error => {
                 console.log('login error: ')
@@ -49,12 +49,12 @@ class Login extends Component {
     }
 
     render() {
-        if (this.state.redirectTo) {
-            return <Redirect to={{ pathname: this.state.redirectTo }} />
-        } else {
+        if (this.props.user) {
+            return <Redirect to="/" />
+        }
             return (
                 <div className="container" id="login">
-                    <form>
+                    <form onSubmit={this.handleSubmit}>
                         <Col s={12} m={5}>
                             <CardPanel>
                                 <h4>Login</h4>
@@ -71,7 +71,7 @@ class Login extends Component {
                                     name="password"
                                     value={this.state.password}
                                     onChange={this.handleChange} />
-                                <Button onClick={this.handleSubmit}>Login</Button>
+                                <Button type="submit">Login</Button>
                                 <a href="/signup/0">Signup</a>&nbsp;&nbsp;
                                 <a href="/signup/1">NPO Signup</a>
 
@@ -82,7 +82,6 @@ class Login extends Component {
 
             )
         }
-    }
 }
 
 export default Login;

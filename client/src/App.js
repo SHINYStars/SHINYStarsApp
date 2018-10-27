@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import Header from './pages/Header/Header';
 import './App.css';
 import Login from './pages/Login/Login';
@@ -26,11 +26,14 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.getUser()
+    if (!this.state.user) {
+      this.getUser();
+    }
   }
 
   updateUser (userObject) {
-    this.setState(userObject)
+    console.log('userObj', userObject);
+    this.setState(userObject);
   }
 
   getUser() {
@@ -63,7 +66,7 @@ class App extends Component {
 
           <Switch>
           <Route exact path="/" component={Home} />
-            <Route exact path="/login" component={Login} />
+            <Route exact path="/login" component={() => <Login handleLogin={this.updateUser} user={this.state.user} />} />
             <Route exact path="/contact" component={Contact} />
             <Route exact path="/volunteer" component={Volunteer} />
             <Route exact path="/donateinkind" component={DonateInKind} />

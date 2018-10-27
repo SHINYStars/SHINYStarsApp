@@ -24,7 +24,7 @@ const Header = (props) => {
                 <NavItem href="/org/edit">Organization</NavItem>
                 <NavItem divider />
                 <NavItem href={'/shinylist/'+userId}>SHINYList</NavItem>
-                <NavItem href='/logout' onClick={logout()}>Logout</NavItem>
+                <NavItem href='/logout' onClick={() => logout()}>Logout</NavItem>
 
             </Dropdown>
             ):""}
