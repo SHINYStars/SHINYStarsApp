@@ -28,6 +28,7 @@ const Header = (props) => {
 
             </Dropdown>
             ):""}
+            <NavItem href="/contact">Contact</NavItem>
         </Navbar>
     </header>
     );

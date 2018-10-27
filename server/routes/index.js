@@ -3,11 +3,13 @@ const router = require("express").Router();
 const userRoutes = require("./api/user");
 const authRoutes = require("./api/auth");
 const orgRoutes = require("./api/organization");
+const emailRoutes = require("./api/email");
 
 
 // API Routes
 router.use("/api/user", userRoutes);
 router.use("/api/auth", authRoutes);
+router.use("/api/email", emailRoutes);
 
 
 // API Routes
@@ -17,6 +19,8 @@ router.use("/api", orgRoutes);
 router.use(function(req, res) {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
+
+
 
 
 module.exports = router;
