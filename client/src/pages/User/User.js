@@ -20,6 +20,10 @@ class User extends Component {
   };
 
 
+  componentDidMount() {
+    this.setOrgflag();
+  }
+
   validateForm() {
     return (
       this.state.firstName.length > 0 &&
@@ -43,6 +47,13 @@ class User extends Component {
     })
   }
 
+  setOrgflag = () => {
+    this.setState({
+      organization: this.props.match.params.org
+    });
+
+  }
+
   confirmError = () => {
     this.setState({
       error: true
@@ -53,6 +64,7 @@ class User extends Component {
     event.preventDefault();
 
     if (this.validateForm()) {
+      const orgParam = this.state.organization;
       API.user({
         firstName: this.state.firstName,
         lastName: this.state.lastName,
@@ -68,7 +80,7 @@ class User extends Component {
             console.error(res.data.error);
             this.confirmError();
           }
-          if (this.props.match.params.org === 1) {
+          if (orgParam === "1") {
             window.location.href = "/organization/" + res.data._id;
           } else {
             console.log(res.data);
@@ -79,6 +91,10 @@ class User extends Component {
     }
   };
   render() {
+    console.log(this.props.match.params.org);
+    console.log(this.state.organization);
+
+
     return (
 
       <div className="container" id="user">
@@ -137,18 +153,22 @@ class User extends Component {
                 type='success'
                 title='Registration Complete!'
                 text='Thanks for Registering!'
-                onConfirm={() =>{ this.setState({
-                  confirmUserSignup: false
-                });window.location.href="/login";}}
+                onConfirm={() => {
+                  this.setState({
+                    confirmUserSignup: false
+                  }); window.location.href = "/login";
+                }}
               />
               <SweetAlert
                 show={this.state.error}
                 type='error'
                 title='Error'
                 text='Already registered with this email!'
-                onConfirm={() => {this.setState({
-                  error: false
-                });window.location.href="/login";}}
+                onConfirm={() => {
+                  this.setState({
+                    error: false
+                  }); window.location.href = "/login";
+                }}
               />
             </CardPanel>
           </Col>
