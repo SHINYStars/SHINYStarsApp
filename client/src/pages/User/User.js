@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
 import API from "../../util/API";
 import SweetAlert from 'sweetalert-react';
-import { Col,CardPanel, Input, Button } from 'react-materialize';
+import 'sweetalert/dist/sweetalert.css';
+import { Col, CardPanel, Input, Button } from 'react-materialize';
 
 class User extends Component {
 
-    state = {
-      isLoading: false,
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      phonenumber1: "",
-      phonenumber2: "",
-      organization: (this.props.match.params.org===1)?1:0,
-      confirmSignup: false
-    };
-  
+  state = {
+    isLoading: false,
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    phonenumber1: "",
+    phonenumber2: "",
+    organization: (this.props.match.params.org === 1) ? 1 : 0,
+    confirmUserSignup: false,
+    error: false
+  };
+
 
   validateForm() {
     return (
@@ -35,11 +37,21 @@ class User extends Component {
     });
   }
 
+  confirmRegistration = () => {
+    this.setState({
+      confirmUserSignup: true
+    })
+  }
 
+  confirmError = () => {
+    this.setState({
+      error: true
+    })
+  }
 
   handleFormSubmit = event => {
     event.preventDefault();
-    
+
     if (this.validateForm()) {
       API.user({
         firstName: this.state.firstName,
@@ -52,9 +64,16 @@ class User extends Component {
 
       })
         .then(res => {
-          if(this.props.match.params.org===1){
-            window.location.href="/organization/"+res.data._id;
-        }
+          if (res.data.error) {
+            console.error(res.data.error);
+            this.confirmError();
+          }
+          if (this.props.match.params.org === 1) {
+            window.location.href = "/organization/" + res.data._id;
+          } else {
+            console.log(res.data);
+            this.confirmRegistration();
+          }
         })
         .catch(err => console.log(err));
     }
@@ -63,12 +82,12 @@ class User extends Component {
     return (
 
       <div className="container" id="user">
-          
+
         <form>
           <Col s={12} m={5}>
             <CardPanel>
               <h4>Signup</h4>
- 
+
               <Input placeholder="First Name" s={6} label="First Name"
                 type="text" name="firstName"
                 defaultValue={this.state.firstName}
@@ -87,12 +106,12 @@ class User extends Component {
               />
 
               <Input placeholder="Password" s={6} label="Password"
-                type="text" name="password"
+                type="password" name="password"
                 defaultValue={this.state.password}
                 onChange={this.handleChange}
               />
               <Input placeholder="Confirm Password" s={6} label="Confirm Password"
-                type="text" name="confirmPassword"
+                type="password" name="confirmPassword"
                 defaultValue={this.state.confirmPassword}
                 onChange={this.handleChange}
               />
@@ -108,19 +127,29 @@ class User extends Component {
                 onChange={this.handleChange} />
 
               <Button
-                 disabled={!this.validateForm()}
+                disabled={!this.validateForm()}
                 onClick={this.handleFormSubmit}>
-               Register User</Button>
+                Register User</Button>
+              <a href="/login">Login</a>
 
               <SweetAlert
-                show = {this.state.confirmSignup}
-                type = 'success'
-                title = 'Registration Complete!'
-                text = 'Thanks for Registering!'
-                onConfirm = {() => this.setState({
-                  confirmSignup: false
-                })}
-                />
+                show={this.state.confirmUserSignup}
+                type='success'
+                title='Registration Complete!'
+                text='Thanks for Registering!'
+                onConfirm={() =>{ this.setState({
+                  confirmUserSignup: false
+                });window.location.href="/login";}}
+              />
+              <SweetAlert
+                show={this.state.error}
+                type='error'
+                title='Error'
+                text='Already registered with this email!'
+                onConfirm={() => {this.setState({
+                  error: false
+                });window.location.href="/login";}}
+              />
             </CardPanel>
           </Col>
         </form>

@@ -4,7 +4,7 @@ import './Home.css';
 
 class Home extends Component {
 
-    handleNPOLogin(event) {
+    handleNPOSignup(event) {
         event.preventDefault()
         console.log('handleNPOLogin')
         window.location.href="/signup/1";
@@ -14,7 +14,7 @@ class Home extends Component {
         event.preventDefault();
         console.log('handleSubmit');
 
-        window.location.href="/signup/0";
+        window.location.href="/login";
     }
 
     handleSearch(event){
@@ -35,7 +35,7 @@ class Home extends Component {
                     </CardPanel>   
                     <div className="right">
                         <Button onClick={this.handleLogin}>Login / Signup</Button>
-                        <Button onClick={this.handleNPOLogin}>NPO Signup</Button>
+                        <Button onClick={this.handleNPOSignup}>NPO Signup</Button>
                         </div>       
             </div>
         );

@@ -17,7 +17,7 @@ class App extends Component {
     super()
     this.state = {
       loggedIn: false,
-      email: null
+      user: null
     }
 
     this.getUser = this.getUser.bind(this)
@@ -43,13 +43,13 @@ class App extends Component {
 
         this.setState({
           loggedIn: true,
-          email: response.data.user.email
+          user: response.data.user
         })
       } else {
         console.log('Get user: no user');
         this.setState({
           loggedIn: false,
-          email: null
+          user: null
         })
       }
     })
@@ -58,7 +58,7 @@ class App extends Component {
   render() {
     return (
       <div className="shinystars-app">
-                <Header email={this.state.email}/>
+                <Header user={this.state.user}/>
         <Router>
 
           <Switch>

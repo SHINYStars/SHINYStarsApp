@@ -1,32 +1,5 @@
 const router = require("express").Router();
-const passport = require('../../../passport')
-
-    
-   /* router.post('/', (req, res) => {
-    console.log('user signup');
-
-    const { username, password } = req.body
-    // ADD VALIDATION
-    User.findOne({ username: username }, (err, user) => {
-        if (err) {
-            console.log('User.js post error: ', err)
-        } else if (user) {
-            res.json({
-                error: `Sorry, already a user with the username: ${username}`
-            })
-        }
-        else {
-            const newUser = new User({
-                username: username,
-                password: password
-            })
-            newUser.save((err, savedUser) => {
-                if (err) return res.json(err)
-                res.json(savedUser)
-            })
-        }
-    })
-})*/
+const passport = require('../../../passport');
 
 router.post('/login',
     function (req, res, next) {
@@ -43,16 +16,6 @@ router.post('/login',
         res.send(userInfo);
     }
 )
-
-/*router.get('/', (req, res, next) => {
-    console.log('===== user!!======')
-    console.log(req.user)
-    if (req.user) {
-        res.json({ user: req.user })
-    } else {
-        res.json({ user: null })
-    }
-})*/
 
 router.post('/logout', (req, res) => {
     if (req.user) {

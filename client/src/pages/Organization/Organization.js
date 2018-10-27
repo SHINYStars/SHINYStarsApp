@@ -139,6 +139,7 @@ class Organization extends Component {
                             this.state.email)}
                         onClick={this.handleFormSubmit}>
                         Save</Button>
+                        <a href="/login">Login</a>
                     <SweetAlert
                         show = {this.state.confirmSignUp}
                         type = 'success'

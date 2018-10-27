@@ -17,7 +17,7 @@
 
 
 @media screen and (max-width: 400px) {
-    #login .card-panel {
+    #home .card-panel {
         height: 200px;
     }
 }
