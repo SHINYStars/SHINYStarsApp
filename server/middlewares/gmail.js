@@ -1,6 +1,5 @@
 const nodemailer = require('nodemailer');
-// const env = require('../config/env');
-import env from '../config/env';//
+import env from '../config/env';
 const fs = require('fs');
 const path = require("path");
 
