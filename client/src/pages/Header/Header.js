@@ -1,37 +1,64 @@
-import React from 'react';
-import { Navbar, NavItem, Dropdown,Button } from 'react-materialize';
+import React, { Component } from 'react';
+import { SideNav, SideNavItem } from 'react-materialize';
 import './Header.css';
 import API from '../../util/API';
 
-const Img = <div><img src='../images/shinystars-logo-5.png' alt="logo" width="60" height="60" className="logo-img" /> SHINY Stars </div>;
+const Img = <div ><img src='../images/shinystars-logo-5.png' alt="logo" width="60" height="60" className="logo-img" /> SHINY Stars </div>;
 
-const logout = () => {
-    API.logout();
-    window.location.href = "/login";
-}
+class Header extends Component {
 
-const Header = (props) => {
-    const userId = (props.user) ? props.user._id : "";
-    console.log(userId);
-    return (
-        <header>
-            <Navbar brand={Img} right>
-                {props.user ? (
-                        <Dropdown trigger={
-                            <a href="#!"><i className="fa fa-user"></i> {props.user.firstName + " " + props.user.lastName}</a>
-                        }>
-                            <NavItem href="/user/edit">Account</NavItem>
-                            <NavItem href="/org/edit">Organization</NavItem>
-                            <NavItem divider />
-                            <NavItem href={'/shinylist/' + userId}>SHINYList</NavItem>
-                            <NavItem href='/logout' onClick={() => logout()}>Logout</NavItem>
+    logout() {
+        API.logout().then((res) => {
+            window.location.href = "/login";
+        });
+    }
 
-                        </Dropdown>
-                ) : ""}
-                <NavItem href="/contact">Contact</NavItem>
-            </Navbar>
-        </header>
-    );
+    render() {
+        let userId = "";
+        let fullName = "";
+        let email = "";
+        if (this.props.user) {
+            userId = this.props.user._id;
+            fullName = this.props.user.firstName + " " + this.props.user.lastName;
+            email = this.props.user.email;
+        }
+        return (
+            <header>
+                {(this.props.user) ? (
+                    <SideNav
+                        trigger={Img}
+                        options={{ closeOnClick: true }}>
+                        <SideNavItem userView
+                            user={{
+                                background: '',
+                                image: '',
+                                name: fullName,
+                                email: email
+                            }}
+                        />
+                        <SideNavItem href="/user/edit">Account</SideNavItem>
+                        <SideNavItem href="/org/edit">Organization</SideNavItem>
+                        <SideNavItem divider />
+                        <SideNavItem href={'/shinylist/' + userId}>SHINYList</SideNavItem>
+                        <SideNavItem href="#!logout" onClick={() => this.logout()}>Logout</SideNavItem>
+                        <SideNavItem href="/contact">Contact</SideNavItem>
+                    </SideNav>
+                ) : (
+                        <SideNav
+                            trigger={Img}
+                            options={{ closeOnClick: true }}
+                        >
+                            <SideNavItem href="/login">Login / Signup</SideNavItem>
+                            <SideNavItem href="/contact">Contact</SideNavItem>
+                        </SideNav>
+                    )
+                }
+
+
+            </header>
+        );
+    }
+
 };
 
 export default Header;

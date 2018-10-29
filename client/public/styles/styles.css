@@ -1,16 +1,33 @@
-.shinystars-app {
+.shinystars-app ,.footer{
     font-family: 'Roboto', sans-serif;
     color: #0065A3;
     margin: 10px;
 }
 
-nav {
+.center-align{
+    text-align: center
+}
+
+nav,footer.page-footer, footer.page-footer .footer-copyright {
     line-height: 100px;
     height: 100px;
     color: #0065A3;
     background-color: #fff;
     border: 0px;
     box-shadow: none;
+}
+
+.side-nav .userView{
+    background-color: #0065A3;
+}
+.social a{
+    font-size: 32px;
+    margin: 0 10px;
+    color: #0065A3;
+}
+
+.social{
+    margin:15px;
 }
 
 nav a, nav ul a, nav .brand-logo, .dropdown-content li>a, .dropdown-content li>span {

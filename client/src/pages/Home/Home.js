@@ -1,23 +1,10 @@
 import React, { Component } from 'react';
-import { Button ,Input,Icon,CardPanel} from 'react-materialize';
+import { CardPanel,Button,Col } from 'react-materialize';
 import './Home.css';
 
 class Home extends Component {
 
-    handleNPOSignup(event) {
-        event.preventDefault()
-        console.log('handleNPOLogin')
-        window.location.href="/signup/1";
-    }
-
-    handleLogin(event) {
-        event.preventDefault();
-        console.log('handleSubmit');
-
-        window.location.href="/login";
-    }
-
-    handleSearch(event){
+    handleSearch(event) {
         event.preventDefault();
         console.log('handleSearch');
     }
@@ -25,18 +12,21 @@ class Home extends Component {
     render() {
         return (
             <div className="" id="home">
-                    <CardPanel>
-                        <div className="overlay">
-                        <Input type="text" placeholder="City, State"></Input>
-                        <Button onClick={this.handleSearch}><Icon>search</Icon></Button>
-
-                        </div>
-                        
-                    </CardPanel>   
-                    <div className="right">
-                        <Button onClick={this.handleLogin}>Login / Signup</Button>
-                        <Button onClick={this.handleNPOSignup}>NPO Signup</Button>
-                        </div>       
+                <CardPanel>
+                    <div className="container">
+                        <form className=" hide-on-med-and-down overlay" id="form1">
+                            <Col s={8} className="card input-field">
+                                <input type="search" placeholder="City, State" id="search" required  />
+                                <label className="label-icon" htmlFor="search"><i className="material-icons">search</i></label>
+                                <i className="material-icons">close</i>
+                                <div id="searchResults"></div>
+                            </Col>
+                             <Col s={4} className="center-align">
+                                <Button onClick={()=>this.handleSearch()}>Search</Button>
+                            </Col>
+                        </form>
+                    </div>
+                </CardPanel>
             </div>
         );
     }
