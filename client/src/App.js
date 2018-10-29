@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from './pages/Header/Header';
+import AppFooter from './pages/Footer/AppFooter';
 import './App.css';
 import Login from './pages/Login/Login';
 import Home from './pages/Home/Home';
@@ -73,6 +74,7 @@ class App extends Component {
             <Route exact path="/signup/:org" component={User} />
           </Switch>
         </Router>
+        <AppFooter/>
       </div>
 
 
