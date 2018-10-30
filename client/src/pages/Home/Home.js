@@ -35,6 +35,7 @@ class Home extends Component {
         })
             .catch(err => console.log(err));
     }else{
+        this.setState({ error:true});
     }
     }
 
@@ -60,7 +61,7 @@ class Home extends Component {
                                     {this.state.organizations.map(organization => (
                                         <CollectionItem
                                             key={organization._id}
-                                            _id={organization._id}>{organization.orgName}</CollectionItem>
+                                            _id={organization._id} ><a href={"/needs/"+organization._id} target="blank">{organization.orgName}</a></CollectionItem>
                                     ))}
                                 </Collection>
                             ) : (

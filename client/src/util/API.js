@@ -2,28 +2,40 @@ import axios from "axios";
 
 export default {
 
-  login: function(user) {
-    return axios.post("/api/auth/login",user);
+  login: function (user) {
+    return axios.post("/api/auth/login", user);
   },
 
-  logout: function(user) {
-    return axios.post("/api/auth/logout",user);
+  logout: function (user) {
+    return axios.post("/api/auth/logout", user);
   },
 
-  user: function(user){
-    return axios.post("/api/user/signup",user)
+  user: function (user) {
+    return axios.post("/api/user/signup", user)
   },
 
-  getUser: function(){
+  getUser: function () {
     return axios.get("/api/user/");
   },
-  
-  search:function(filter){
-    return axios.post("/api/search",filter);
+
+  search: function (filter) {
+    return axios.post("/api/search", filter);
   },
 
   //Registers new organization
   newOrganization: function (organization) {
     return axios.post("/api/organization/signup", organization)
+  },
+
+  newNeed: function (need) {
+    return axios.post("/api/needs/new", need);
+  },
+
+  getNeeds: function (orgId) {
+    return axios.get("/api/needs/" + orgId);
+  },
+
+  removeNeed: function (needId) {
+    return axios.delete("/api/needs/" + needId);
   }
 };

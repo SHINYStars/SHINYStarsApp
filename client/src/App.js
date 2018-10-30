@@ -10,6 +10,8 @@ import DonateInKind from './pages/Donate/DonateInKind';
 import Volunteer from './pages/Volunteer/Volunteer';
 import Organization from './pages/Organization/Organization';
 import User from './pages/User/User';
+import Needs from './pages/Needs/Needs';
+
 import API from './util/API';
 import { request } from 'https';
 
@@ -72,6 +74,7 @@ class App extends Component {
             <Route exact path="/donateinkind" component={DonateInKind} />
             <Route exact path="/organization/:user" component={Organization} />
             <Route exact path="/signup/:org" component={User} />
+            <Route exact path="/needs/:orgId" component={Needs}/>
           </Switch>
         </Router>
         <AppFooter/>
