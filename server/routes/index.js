@@ -4,20 +4,19 @@ const userRoutes = require("./api/user");
 const authRoutes = require("./api/auth");
 const orgRoutes = require("./api/organization");
 const emailRoutes = require("./api/email");
-
+const searchRoutes = require("./api/search");
 
 // API Routes
 router.use("/api/user", userRoutes);
+router.use("/api/organization", orgRoutes);
 router.use("/api/auth", authRoutes);
 router.use("/api/email", emailRoutes);
-
-
-// API Routes
-router.use("/api", orgRoutes);
+router.use("/api/search", searchRoutes);
 
 // If no API routes are hit, send the React app
 router.use(function(req, res) {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+  console.log(req.body);
+  res.sendFile(path.join(__dirname, "../../client/public/index.html"));
 });
 
 

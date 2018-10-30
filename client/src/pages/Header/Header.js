@@ -3,7 +3,7 @@ import { SideNav, SideNavItem } from 'react-materialize';
 import './Header.css';
 import API from '../../util/API';
 
-const Img = <div ><img src='../images/shinystars-logo-5.png' alt="logo" width="60" height="60" className="logo-img" /> SHINY Stars </div>;
+const Img = <div ><img src='../images/shinystars-logo-5.png' alt="logo" width="60" height="60" className="logo-img" /><span className="app-name">SHINY Stars</span></div>;
 
 class Header extends Component {
 
