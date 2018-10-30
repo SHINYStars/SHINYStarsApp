@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const gmailRoutes = require("./email");
+const emailRoutes = require("./email");
 
-router.use("/", gmailRoutes);
+router.use("/", emailRoutes);
 
 module.exports = router;
