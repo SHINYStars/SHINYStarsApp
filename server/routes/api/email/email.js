@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const sendMailFromGmail = '../../../middlewares/gmail';
+import { sendMailFromGmail } from '../../../middlewares/gmail';
 
 router.route('/send').post(sendEmail);
 
@@ -7,4 +7,4 @@ function sendEmail(req, res, next) {
   sendMailFromGmail(req, res, next);
 }
 
-module.exports = router;
+export default router;

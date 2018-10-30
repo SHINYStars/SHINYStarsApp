@@ -21,7 +21,7 @@ const env = {
   env[process.env.NODE_ENV].ENCRYPTED_PASSWORD = 'dGVtcEAxMjM0';
   
   // enter your website here: 
-  env[process.env.NODE_ENV].SITE = '';
+  env[process.env.NODE_ENV].SITE = 'shinystars.org';
   
   
   export default env[process.env.NODE_ENV];

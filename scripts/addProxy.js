@@ -1,7 +1,7 @@
 var fs = require('fs');
 var chalk = require('chalk');
 
-fs.readFile('./frontend/package.json', 'utf8', function(err, data) {
+fs.readFile('./client/package.json', 'utf8', function(err, data) {
   if (err) throw err;
   var obj = JSON.parse(data);
   obj.proxy = 'http://localhost:4000';
