@@ -1,5 +1,5 @@
 const nodemailer = require('nodemailer');
-import env from '../config/env';
+const env =require('../config/env');
 const fs = require('fs');
 const path = require("path");
 
@@ -9,11 +9,11 @@ const elementMap = {
   "body": "BODY"
 }
 
-export default function(req, res, next) {
+module.exports= function(req, res, next) {
   next();
 }
 
-export const sendMailFromGmail = (req, res, next) => {
+module.exports=  sendMailFromGmail = (req, res, next) => {
   const buff = new Buffer(env.ENCRYPTED_PASSWORD, 'base64');
   const transporter = nodemailer.createTransport({
     service: 'gmail',
