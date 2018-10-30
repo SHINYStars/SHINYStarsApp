@@ -18,6 +18,10 @@ export default {
     return axios.get("/api/user/");
   },
   
+  search:function(filter){
+    return axios.post("/api/search",filter);
+  },
+
   //Registers new organization
   newOrganization: function (organization) {
     return axios.post("/api/organization/signup", organization)
