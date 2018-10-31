@@ -40,6 +40,7 @@ class Header extends Component {
                         <SideNavItem href="/org/edit">Organization</SideNavItem>
                         <SideNavItem divider />
                         <SideNavItem href={'/shinylist/' + userId}>SHINYList</SideNavItem>
+                        <SideNavItem href="/volunteer">Volunteer</SideNavItem>
                         <SideNavItem href="#!logout" onClick={() => this.logout()}>Logout</SideNavItem>
                         <SideNavItem href="/contact">Contact</SideNavItem>
                     </SideNav>
@@ -48,6 +49,7 @@ class Header extends Component {
                             trigger={Img}
                             options={{ closeOnClick: true }}
                         >
+                            <SideNavItem href="/volunteer">Volunteer</SideNavItem>
                             <SideNavItem href="/login">Login / Signup</SideNavItem>
                             <SideNavItem href="/contact">Contact</SideNavItem>
                         </SideNav>
