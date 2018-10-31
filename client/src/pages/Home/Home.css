@@ -3,9 +3,7 @@
     width: 100%;
     height: 800px;
     background-repeat: no-repeat;
-    background-size: cover;
-   /* background-color: aliceblue;*/
-   
+    background-size: cover;   
 }
 
 #home .card-panel .overlay{
@@ -14,12 +12,33 @@
     transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
 }
 
+.list-org{
+    min-height:100px;
+}
+
 @media screen and (max-width: 400px) {
     #home .card-panel {
         height: 200px;
     }
 }
 
+@media screen and (max-width: 768px) {
+    #home .card-panel {
+        height: 500px;
+    }
+}
 
+@media screen and (max-width: 576px) {
+    #home .card-panel {
+        height: 300px;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+    #home .card-panel {
+        height: 200px;
+    }
+}
 
     

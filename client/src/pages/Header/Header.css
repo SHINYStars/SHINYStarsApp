@@ -1,3 +1,7 @@
 .dropdown-content .active{
     width:0px;
 }
+
+.app-name{
+    font-size:2.5em;
+}

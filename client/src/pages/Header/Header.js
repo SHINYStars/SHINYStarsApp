@@ -3,7 +3,8 @@ import { SideNav, SideNavItem } from 'react-materialize';
 import './Header.css';
 import API from '../../util/API';
 
-const Img = <div ><img src='../images/shinystars-logo-5.png' alt="logo" width="60" height="60" className="logo-img" /> SHINY Stars </div>;
+const Img = <div >
+<img src='../images/shinystars-logo-5.png' alt="logo" width="60" height="60" className="logo-img" /><span className="app-name">SHINY Stars</span></div>;
 
 class Header extends Component {
 
@@ -39,6 +40,7 @@ class Header extends Component {
                         <SideNavItem href="/user/edit">Account</SideNavItem>
                         <SideNavItem href="/org/edit">Organization</SideNavItem>
                         <SideNavItem divider />
+                        <SideNavItem href="/">Home</SideNavItem>
                         <SideNavItem href={'/shinylist/' + userId}>SHINYList</SideNavItem>
                         <SideNavItem href="#!logout" onClick={() => this.logout()}>Logout</SideNavItem>
                         <SideNavItem href="/contact">Contact</SideNavItem>
