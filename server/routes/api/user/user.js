@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const userController = require("../../../controllers/userController");
-var passport = require("passport");
 
     router.route("/signup")
     .post(userController.create);
