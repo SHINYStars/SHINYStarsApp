@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import API from "../../util/API";
 import { Col, CardPanel, Input, Button, Icon, Row } from "react-materialize";
 
 class Volunteer extends Component {
@@ -19,8 +19,13 @@ class Volunteer extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.handleSubmit);
-    
+    API.volunteerSignup({
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      email: this.state.email
+    }).then(res => {
+      console.log("Saved");
+    })
   }
 
   render() {
@@ -28,7 +33,7 @@ class Volunteer extends Component {
       <Row id="volunteer">
         <form>
           <Col s={12} m={6} l={6} xl={6} offset="l3 xl3 m3">
-           <CardPanel className="grey lighten-2 black-text">
+           <CardPanel className=" black-text">
                <h4>Register to Volunteer</h4>
                <Input 
                   s={12} 
@@ -52,11 +57,11 @@ class Volunteer extends Component {
                   s={12} 
                   style={{marginTop:"2%"}} />
                <Button 
-                  className="grey lighten-2 black-text" 
+                  // className="grey lighten-2 black-text" 
                   waves='light' 
                   style={{marginTop:"2%"}} 
                   onClick={this.handleSubmit}>
-               Submit<Icon right>thumb_up</Icon></Button>
+               Sign Up<Icon right>thumb_up</Icon></Button>
              </CardPanel>
            </Col>
          </form>
