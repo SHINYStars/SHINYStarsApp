@@ -27,6 +27,10 @@ export default {
     return axios.post("/api/organization/signup", organization)
   },
 
+  volunteerSignup: function (volunteer) {
+    return axios.post("/api/volunteer/signup", volunteer);
+  },
+  
   newNeed: function (need) {
     return axios.post("/api/needs/new", need);
   },
