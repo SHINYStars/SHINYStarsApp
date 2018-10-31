@@ -13,13 +13,10 @@ router.use("/api/user", userRoutes);
 router.use("/api/organization", orgRoutes);
 router.use("/api/auth", authRoutes);
 router.use("/api/email", emailRoutes);
-<<<<<<< HEAD
 router.use("/api/volunteer", volunteerRoutes);
-=======
-router.use("./api/volunteer", volunteerRoutes);
 router.use("/api/search", searchRoutes);
 router.use("/api/needs", needsRoutes);
->>>>>>> bf454bbbbade1097fc08194bd9ee9ef1a27fc13f
+
 
 
 // If no API routes are hit, send the React app
