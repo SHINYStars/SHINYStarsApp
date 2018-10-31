@@ -11,7 +11,7 @@ const volunteerRoutes = require("./api/volunteer")
 router.use("/api/user", userRoutes);
 router.use("/api/auth", authRoutes);
 router.use("/api/email", emailRoutes);
-router.use("./api/volunteer", volunteerRoutes);
+router.use("/api/volunteer", volunteerRoutes);
 
 
 // API Routes

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import API from "../../util/API";
 import { Col, CardPanel, Input, Button, Icon, Row } from "react-materialize";
 
 class Volunteer extends Component {
@@ -19,8 +19,13 @@ class Volunteer extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.handleSubmit);
-    
+    API.volunteerSignup({
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      email: this.state.email
+    }).then(res => {
+      console.log("Saved");
+    })
   }
 
   render() {
