@@ -26,8 +26,6 @@ module.exports = {
   },
 
   update: function (req, res) {
-    console.log("PARAMETERS:");
-    console.log(req.body);
     db.Organization
       .findOneAndUpdate({ userId: req.body.userId }, req.body)
       .then(dbModel => res.json(dbModel))
