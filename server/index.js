@@ -33,7 +33,7 @@ class App {
         app.use(cors());
         app.use(bodyParser.urlencoded({ extended: true }));
         app.use(bodyParser.json({ type: '*/*'})); // Type indicates ALL header types OK
-        app.use(express.static(path.resolve(__dirname, '..', '..', 'public'))) // Serve files in our Rect app public directory
+        app.use(express.static(path.resolve(__dirname, 'public'))) // Serve files in our Rect app public directory
         
         // We need to use sessions to keep track of our user's login status
         app.use(
