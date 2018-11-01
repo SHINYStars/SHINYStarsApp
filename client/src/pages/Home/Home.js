@@ -11,7 +11,7 @@ class Home extends Component {
         search: "",
         organizations: [],
         message: "",
-        error:false
+        error: false
     };
 
     handleChange = event => {
@@ -26,17 +26,17 @@ class Home extends Component {
 
         console.log('handleSearch');
         const filters = this.state.search;
-        if(filters!==""){
-        API.search({ filters }).then(res => {
-            if (!res.data.length) {
-                this.setState({ message: "No NPO's in your location." })
-            }
-            this.setState({ organizations: res.data });
-        })
-            .catch(err => console.log(err));
-    }else{
-        this.setState({ error:true});
-    }
+        if (filters !== "") {
+            API.search({ filters }).then(res => {
+                if (!res.data.length) {
+                    this.setState({ message: "No NPO's in your location." })
+                }
+                this.setState({ organizations: res.data });
+            })
+                .catch(err => console.log(err));
+        } else {
+            this.setState({ error: true });
+        }
     }
 
     render() {
@@ -56,31 +56,34 @@ class Home extends Component {
                         </form>
                     </div>
                     <div className="container list-org">
-                    {this.state.organizations.length ? (
-                    
-                                    this.state.organizations.map(organization => (
-                                        <Card title={<a href={"/needs/"+organization._id}>{organization.orgName}</a>}
-                                reveal={<p>{organization.website}</p>}>
-                                </Card>
+                        {this.state.organizations.length ? (
+
+                            this.state.organizations.map(organization => (
+                                <Card key={organization._id} title={organization.orgName}
+                                    reveal={<p>{organization.website}</p>}>
+                                    
+                                    <a href={"/needs/" + organization._id}>See Needs</a>
                                         
-                                    ))
-                                
-                            ) : (
-                                    <h2 className="text-center">{this.state.message}</h2>
-                                )}
-                                </div>
+                                </Card>
+
+                            ))
+
+                        ) : (
+                                <h2 className="text-center">{this.state.message}</h2>
+                            )}
+                    </div>
                 </CardPanel>
                 <SweetAlert
-                show={this.state.error}
-                type='error'
-                title='Error'
-                text='Please enter valid City,State or zip'
-                onConfirm={() => {
-                  this.setState({
-                    error: false
-                  });
-                }}
-              />
+                    show={this.state.error}
+                    type='error'
+                    title='Error'
+                    text='Please enter valid City,State or zip'
+                    onConfirm={() => {
+                        this.setState({
+                            error: false
+                        });
+                    }}
+                />
             </div>
         );
     }

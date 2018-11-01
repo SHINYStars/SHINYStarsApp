@@ -24,7 +24,7 @@ class Header extends Component {
             email = this.props.user.email;
         }
         return (
-            <header>
+            <header className="header-nav">
                 {(this.props.user) ? (
                     <SideNav
                         trigger={Img}
