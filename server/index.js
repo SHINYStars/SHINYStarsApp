@@ -46,7 +46,7 @@ class App {
         app.use(passport.session());
 
         app.get('*', function (req, res) {
-            const index = path.join(__dirname, '../../client/build', 'index.html');
+            const index = path.join(__dirname, '../client/build', 'index.html');
             res.sendFile(index);
           });
 
