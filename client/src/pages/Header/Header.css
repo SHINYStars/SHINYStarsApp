@@ -6,3 +6,23 @@
     font-size:2.5em;
     font-family: fantasy;
 }
+
+.header-nav{
+    background:url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 50 50' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0,101,163, 2)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") no-repeat right 10%;
+    color:#0065A3;
+    margin-bottom:40px;
+    margin: 10px;
+}
+
+@media screen and (max-width: 576px) {
+    .header-nav{
+        background: none;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+    .header-nav{
+        background: none;
+    }
+}

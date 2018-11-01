@@ -91,7 +91,7 @@ class Needs extends Component {
         return (
             <div className="container" id="needs">
                 <Row>
-                    <Col s={6}>
+                    <Col s={12}>
                         <form>
                             <CardPanel>
 
@@ -129,7 +129,7 @@ class Needs extends Component {
                             </CardPanel>
                         </form>
                     </Col>
-                    <Col s={6}>
+                    <Col s={12}>
                         
                             {this.state.needs.length ? (
                                 <Collection>

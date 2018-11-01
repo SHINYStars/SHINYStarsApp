@@ -77,6 +77,7 @@ class App extends Component {
             <Route exact path="/needs/:orgId" component={Needs}/>
           </Switch>
         </Router>
+        <hr/>
         <AppFooter/>
       </div>
 
