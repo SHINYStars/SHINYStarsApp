@@ -9,9 +9,11 @@ import Contact from './pages/Contact/Contact';
 import DonateInKind from './pages/Donate/DonateInKind';
 import Volunteer from './pages/Volunteer/Volunteer';
 import Organization from './pages/Organization/Organization';
+import OrganizationEdit from './pages/OrganizationEdit/OrganizationEdit';
 import User from './pages/User/User';
 import Needs from './pages/Needs/Needs';
 import OrganizationNeeds from './pages/OrganizationNeeds/OrganizationNeeds';
+import VolunteerEmail from './pages/VolunteerEmail/VolunteerEmail';
 
 import API from './util/API';
 import { request } from 'https';
@@ -35,7 +37,7 @@ class App extends Component {
     }
   }
 
-  updateUser (userObject) {
+  updateUser(userObject) {
     console.log('userObj', userObject);
     this.setState(userObject);
   }
@@ -65,26 +67,25 @@ class App extends Component {
   render() {
     return (
       <div className="shinystars-app">
-                <Header user={this.state.user}/>
+        <Header user={this.state.user} />
         <Router>
           <Switch>
-          <Route exact path="/" render={(props) => <Home user={this.state.user} {...props}/>} />
+            <Route exact path="/" render={(props) => <Home user={this.state.user} {...props}/>} />
             <Route exact path="/login" component={() => <Login handleLogin={this.updateUser} user={this.state.user} />} />
             <Route exact path="/contact" component={Contact} />
             <Route exact path="/volunteer" component={Volunteer} />
             <Route exact path="/donateinkind" component={DonateInKind} />
             <Route exact path="/organization/:user" component={Organization} />
+            <Route exact path="/organization/edit/org" component={() => <OrganizationEdit user={this.state.user} />} />
             <Route exact path="/signup/:org" component={User} />
             <Route exact path="/needs/:orgId" component={Needs}/>
             <Route exact path="/orgneeds/:orgId/" render={(props)=><OrganizationNeeds user={this.state.user} {...props}/>}/>
-
+            <Route exact path ="/volunteerEmail" component={VolunteerEmail} />
           </Switch>
         </Router>
         <hr/>
         <AppFooter/>
       </div>
-
-
     );
   }
 }
