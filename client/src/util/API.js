@@ -17,6 +17,9 @@ export default {
   getUser: function () {
     return axios.get("/api/user/");
   },
+  updateUser: function () {
+    return axios.get("/api/user/edit")
+  },
 
   search: function (filter) {
     return axios.post("/api/search", filter);
