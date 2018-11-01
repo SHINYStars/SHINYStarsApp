@@ -51,5 +51,9 @@ export default {
 
   removeNeed: function (needId) {
     return axios.delete("/api/needs/" + needId);
+  },
+
+  addNeedToShinyList:function(shinylist){
+    return axios.post("/api/shinylist/",shinylist);
   }
 };

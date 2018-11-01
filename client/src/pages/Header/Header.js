@@ -51,8 +51,9 @@ class Header extends Component {
                             trigger={Img}
                             options={{ closeOnClick: true }}
                         >
-                            <SideNavItem href="/volunteer">Volunteer</SideNavItem>
+                            <SideNavItem href="/">Home</SideNavItem>
                             <SideNavItem href="/login">Login / Signup</SideNavItem>
+                            <SideNavItem href="/volunteer">Volunteer</SideNavItem>
                             <SideNavItem href="/contact">Contact</SideNavItem>
                         </SideNav>
                     )

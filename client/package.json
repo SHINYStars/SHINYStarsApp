@@ -26,6 +26,6 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "proxy": "http://localhost:3080",
+  "proxy": "http://localhost:3090",
   "homepage": "https://shinystars.herokuapp.com"
 }
