@@ -12,6 +12,7 @@ import Organization from './pages/Organization/Organization';
 import OrganizationEdit from './pages/OrganizationEdit/OrganizationEdit';
 import User from './pages/User/User';
 import Needs from './pages/Needs/Needs';
+import VolunteerEmail from './pages/VolunteerEmail/VolunteerEmail';
 
 import API from './util/API';
 import { request } from 'https';
@@ -77,6 +78,7 @@ class App extends Component {
             <Route exact path="/organization/edit/org" component={() => <OrganizationEdit user={this.state.user} />} />
             <Route exact path="/signup/:org" component={User} />
             <Route exact path="/needs/:orgId" component={Needs} />
+            <Route exact path ="/volunteerEmail" component={VolunteerEmail} />
           </Switch>
         </Router>
         <hr/>
