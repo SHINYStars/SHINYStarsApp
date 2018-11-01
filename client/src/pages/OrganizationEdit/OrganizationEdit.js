@@ -4,8 +4,10 @@ import API from "../../util/API";
 import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css';
 import { CardPanel, Button } from 'react-materialize';
+// import { debug } from 'util';
 
-class Organization extends Component {
+
+class OrganizationEdit extends Component {
     state = {
         orgName: "",
         website: "",
@@ -17,17 +19,39 @@ class Organization extends Component {
         zip: "",
         phoneNumber: "",
         email: "",
-        userId: this.props.match.params.user,
-        confirmSignUp: false
+        userId: "",
+        confirmUpdate: false
+
     };
 
-    // componentDidMount() {
-    //     this.confirmRegistration();
-    // }
+    componentDidMount() {
+        if (this.props.user) {
+            API.getOrganization(this.props.user)
+                .then(res => this.populateForm(res))
+                .catch(err => console.log(err));
+        }
+    }
 
-    confirmRegistration = () => {
+    populateForm = (res) => {
+        const org = res.data;
         this.setState({
-            confirmSignUp: true
+            orgName: org.orgName,
+            website: org.website,
+            address1: org.address1,
+            address2: org.address2,
+            city: org.city,
+            state: org.state,
+            country: org.country,
+            zip: org.zip,
+            phoneNumber: org.phoneNumber,
+            email: org.email,
+            userId: org.userId
+        });
+    }
+
+    confirmUpdate = () => {
+        this.setState({
+            confirmUpdate: true
         })
     }
 
@@ -55,9 +79,8 @@ class Organization extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         const { orgName, website, address1, address2, city, state, country, zip, phoneNumber, email, userId } = this.state;
-
         if (this.validateForm()) {
-            API.newOrganization({
+            API.updateOrganization({
                 orgName: orgName,
                 website: website,
                 address1: address1,
@@ -70,20 +93,17 @@ class Organization extends Component {
                 email: email,
                 userId: userId
             })
-                .then(res => this.confirmRegistration())
+                .then(res => this.confirmUpdate())
                 .catch(err => console.log(err));
         }
     };
 
     render() {
-        console.log(`Hello world`);
         return (
             <div className="container" id="organization">
                 <form>
                     <CardPanel>
-
-                        <h4>NPO Profile</h4>
-
+                        <h4>Edit Organization Profile</h4>
                         <Input
                             value={this.state.orgName}
                             onChange={this.handleInputChange}
@@ -140,17 +160,17 @@ class Organization extends Component {
                         <Button
                             disabled={!(this.validateForm())}
                             onClick={this.handleFormSubmit}>
-                            Save</Button>
-                        <a href="/login">Login</a>
+                            Update Profile</Button>
+                        <a href="/">Cancel</a>
                         <SweetAlert
-                            show={this.state.confirmSignUp}
+                            show={this.state.confirmUpdate}
                             type='success'
-                            title='Registration Complete!'
-                            text='Your organization registration is completed. Thank you!'
+                            title='Profile Updated!'
+                            text='Your organization profile has been updated successfully'
                             onConfirm={() => {
                                 this.setState({
-                                    confirmSignUp: false
-                                }); window.location.href = "/";
+                                    confirmUpdate: false
+                                }); window.location.href = "/organization/edit/org";
                             }}
                         />
                     </CardPanel>
@@ -160,4 +180,4 @@ class Organization extends Component {
     }
 }
 
-export default Organization;
+export default OrganizationEdit;

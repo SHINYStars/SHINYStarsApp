@@ -4,11 +4,11 @@ const organizationController = require("../../../controllers/organizationControl
 router.route("/signup")
     .post(organizationController.create);
 
-router.route("/:id")
-    .post(organizationController.update);
-
-router.route("/:id")
+router.route("/get/:id")
     .get(organizationController.get);
+
+router.route("/edit/")
+    .put(organizationController.update);
 
 
 

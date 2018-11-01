@@ -19,20 +19,18 @@ module.exports = {
       });
   },
 
-  update: function (req, res) {
-    console.log("update");
-    db.Organization
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
+  get: function (req, res) {
+    db.Organization.findOne({ userId: req.params.id })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
 
-  get:function(req,res){
-    db.Organization.findOne({ _id: req.params.id })
-    .then(dbModel => res.json(dbModel))
-    .catch(err => res.status(422).json(err));
-  }
-
-
+  update: function (req, res) {
+    console.log("PARAMETERS:");
+    console.log(req.body);
+    db.Organization
+      .findOneAndUpdate({ userId: req.body.userId }, req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
 };
-
