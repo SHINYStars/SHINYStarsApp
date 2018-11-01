@@ -32,9 +32,9 @@ class OrganizationEdit extends Component {
     componentDidMount() {
         this.setUserId();
         API.getOrganization(this.props.match.params.userId)
+            // API.getOrganization(this.state.userId)
             .then(res => {
-                console.log(res.data[0]);
-                this.populateForm(res.data);
+                this.populateForm(res.data[0]);
             })
             .catch(err => console.log(err));
     }
@@ -176,7 +176,7 @@ class OrganizationEdit extends Component {
                             onConfirm={() => {
                                 this.setState({
                                     confirmUpdate: false
-                                }); window.location.href = "/organization/edit/org";
+                                }); window.location.href = "/organization/edit/" + this.state.userId;
                             }}
                         />
                     </CardPanel>
