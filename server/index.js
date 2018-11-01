@@ -45,10 +45,15 @@ class App {
         app.use(passport.initialize());
         app.use(passport.session());
 
+        app.get('*', function (req, res) {
+            const index = path.join(__dirname, '/client/build', 'index.html');
+            res.sendFile(index);
+          });
+
         app.use(routes);
 
         if (process.env.NODE_ENV === 'production') 
-            app.use(express.static('client/build'));
+            app.use(express.static('/client/build'));
         if (process.env.NODE_ENV === 'test') 
             app.use(morgan(() => null));
         else 
