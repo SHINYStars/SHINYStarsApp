@@ -19,10 +19,17 @@ module.exports = {
       });
   },
 
+  getOne: function (req, res) {
+    db.Organization.findOne({ userId: req.params.id })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
   update: function (req, res) {
-    console.log("update");
+    console.log("PARAMETERS:");
+    console.log(req.body);
     db.Organization
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .findOneAndUpdate({ userId: req.body.userId }, req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -35,6 +42,4 @@ module.exports = {
         .catch(err => res.status(422).json(err));
 }
 
-
 };
-

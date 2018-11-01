@@ -38,7 +38,7 @@ class Header extends Component {
                             }}
                         />
                         <SideNavItem href="/user/edit">Account</SideNavItem>
-                        <SideNavItem href="/org/edit">Organization</SideNavItem>
+                        <SideNavItem href="/organization/edit/org">Organization</SideNavItem>
                         <SideNavItem divider />
                         <SideNavItem href="/">Home</SideNavItem>
                         <SideNavItem href={'/shinylist/' + userId}>SHINYList</SideNavItem>
