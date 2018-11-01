@@ -11,14 +11,32 @@ class Home extends Component {
         search: "",
         organizations: [],
         message: "",
-        error: false
+        error: false,
+        userInfo:null,
+        needLink:"orgneeds"
     };
+
+    componentDidMount=()=>{
+        this.setUserInfo(this.props.user);
+    }
+
+    setUserInfo=(user)=>{
+        this.setState({userInfo:user});
+        if(user && user.organization){
+            this.setState({needLink:"needs"});
+        }
+    }
 
     handleChange = event => {
         const { name, value } = event.target;
         this.setState({
             [name]: value
         });
+    }
+
+    handleNeeds = orgId =>{
+        //event.preventDefault();
+        this.props.history.push('/'+this.state.needLink+"/"+orgId);        
     }
 
     handleSearch = (event) => {
@@ -61,9 +79,7 @@ class Home extends Component {
                             this.state.organizations.map(organization => (
                                 <Card key={organization._id} title={organization.orgName}
                                     reveal={<p>{organization.website}</p>}>
-                                    
-                                    <a href={"/needs/" + organization._id}>See Needs</a>
-                                        
+                                    <a href="#!" onClick={()=>this.handleNeeds(organization._id)}>See Needs</a>
                                 </Card>
 
                             ))

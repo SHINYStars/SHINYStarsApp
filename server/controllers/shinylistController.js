@@ -7,16 +7,14 @@ const db = require('../database/models');
 module.exports = {
 
   create: function (req, res) {
-    db.ShinyList.create(req.body)
-      .then(function (need) {
-        // View the added result in the console
-        console.log(need);
-        res.json(need);
-      })
-      .catch(function (err) {
-        // If an error occurred, send it to the client
-        return res.status(422).json(err);
-      });
+    console.log("Need", req.body.needId);
+    console.log("userId", req.body.userId);
+    // View the added result in the console
+    db.User.findByIdAndUpdate(req.body.userId, { $push: { shinylist: req.body.needId } }, { new: true }, function (err, obj) {
+        if (err) return handleError(err);
+        console.log(obj);
+        res.json(obj);
+    });
   },
 
   get:function(req,res){

@@ -1,3 +1,7 @@
 #needs .collection .fa.fa-trash{
     float:right;
 }
+
+.shiny-right{
+    float:right;
+}

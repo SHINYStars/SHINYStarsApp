@@ -40,6 +40,7 @@ class Login extends Component {
                     this.props.handleLogin({
                         user: response.data.user
                     });
+                    
                 }
             }).catch(error => {
                 console.log('login error: ')
