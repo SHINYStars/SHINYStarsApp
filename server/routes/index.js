@@ -22,7 +22,7 @@ router.use("/api/needs", needsRoutes);
 // If no API routes are hit, send the React app
 router.use(function(req, res) {
   console.log(req.body);
-  res.sendFile(path.join(__dirname, "../../client/public/index.html"));
+  res.sendFile(path.join(__dirname, "../../client/build","index.html"));
 });
 
 
