@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { CardPanel, Button, Col, Collection, CollectionItem } from 'react-materialize';
+import { CardPanel, Button, Col, Card } from 'react-materialize';
 import './Home.css';
 import API from '../../util/API';
 import SweetAlert from 'sweetalert-react';
@@ -57,13 +57,14 @@ class Home extends Component {
                     </div>
                     <div className="container list-org">
                     {this.state.organizations.length ? (
-                                <Collection>
-                                    {this.state.organizations.map(organization => (
-                                        <CollectionItem
-                                            key={organization._id}
-                                            _id={organization._id} ><a href={"/needs/"+organization._id} target="blank">{organization.orgName}</a></CollectionItem>
-                                    ))}
-                                </Collection>
+                    
+                                    this.state.organizations.map(organization => (
+                                        <Card title={<a href={"/needs/"+organization._id}>{organization.orgName}</a>}
+                                reveal={<p>{organization.website}</p>}>
+                                </Card>
+                                        
+                                    ))
+                                
                             ) : (
                                     <h2 className="text-center">{this.state.message}</h2>
                                 )}
