@@ -1,11 +1,9 @@
 const mongoose = require('mongoose');
-// const Product = require('../models/product');
-
 
 const User = require("./user/user")
 
 //Non-Profit Organization
-const Organization = require('../models/organization');
+const Organization = require('../models');
 
 // Below is an example of a method that seeds your database
 // Customize it to fit your needs, and execute it by calling it on a custom route

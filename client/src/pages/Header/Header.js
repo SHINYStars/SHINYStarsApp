@@ -4,7 +4,7 @@ import './Header.css';
 import API from '../../util/API';
 
 const Img = <div >
-<img src='../images/shinystars-logo-5.png' alt="logo" width="60" height="60" className="logo-img" /><span className="app-name">SHINY Stars</span></div>;
+<img src='../images/shinystars-logo-6.png' alt="logo" width="60" height="60" className="logo-img" /><span className="app-name">SHINY Stars</span></div>;
 
 class Header extends Component {
 

@@ -55,9 +55,11 @@ const organizationSchema = new Schema({
     userId: {
         type: String,
         required: true
-    }
+    },
+    needs:[
+        {type: Schema.Types.ObjectId, ref: 'Need'}
+      ]
 });
 
 const Organization = mongoose.model("Organization", organizationSchema);
-
-module.exports = Organization;
+module.exports =  Organization;

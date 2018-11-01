@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const db = require('../database/models/organization');
+const db = require('../database/models');
 
 // Define your database controllers here!
 // Ex: Create, Update, Delete, etc.
@@ -27,11 +27,13 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
 
-  get:function(req,res){
-    db.Organization.findOne({ _id: req.params.id })
-    .then(dbModel => res.json(dbModel))
-    .catch(err => res.status(422).json(err));
-  }
+  get: function (req, res) {
+    db.Organization.findById(req.params.orgId).populate('needs')
+        .then(dbModel => {
+          console.log(dbModel);
+          res.json(dbModel)})
+        .catch(err => res.status(422).json(err));
+}
 
 
 };

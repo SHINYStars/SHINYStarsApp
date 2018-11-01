@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const dbUser = require('../database/models/user');
+const dbUser = require('../database/models');
 
 // Define your database controllers here!
 // Ex: Create, Update, Delete, etc.
