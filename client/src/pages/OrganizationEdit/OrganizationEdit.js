@@ -20,21 +20,26 @@ class OrganizationEdit extends Component {
         phoneNumber: "",
         email: "",
         userId: "",
+        needs: [],
         confirmUpdate: false
 
     };
 
-    componentDidMount() {
-        if (this.props.user) {
-            debugger;
-            API.getOrganization(this.props.user)
-                .then(res => this.populateForm(res))
-                .catch(err => console.log(err));
-        }
+    setUserId = () => {
+        this.setState({ userId: this.props.match.params.userId });
     }
 
-    populateForm = (res) => {
-        const org = res.data;
+    componentDidMount() {
+        this.setUserId();
+        API.getOrganization(this.props.match.params.userId)
+            .then(res => {
+                console.log(res.data[0]);
+                this.populateForm(res.data);
+            })
+            .catch(err => console.log(err));
+    }
+
+    populateForm = (org) => {
         this.setState({
             orgName: org.orgName,
             website: org.website,
@@ -46,7 +51,7 @@ class OrganizationEdit extends Component {
             zip: org.zip,
             phoneNumber: org.phoneNumber,
             email: org.email,
-            userId: org.userId
+            needs: org.needs
         });
     }
 
