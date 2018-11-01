@@ -26,6 +26,7 @@ class OrganizationEdit extends Component {
 
     componentDidMount() {
         if (this.props.user) {
+            debugger;
             API.getOrganization(this.props.user)
                 .then(res => this.populateForm(res))
                 .catch(err => console.log(err));
