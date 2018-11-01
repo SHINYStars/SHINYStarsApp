@@ -10,8 +10,6 @@ class Needs extends Component {
     state = {
         needs:[],
         orgId: this.props.match.params.orgId,
-        need: "",
-        comment: "",
         message:""
     };
 
@@ -22,11 +20,10 @@ class Needs extends Component {
     loadNeeds =() =>{
         API.getNeeds(this.state.orgId)
         .then(res => {
-            console.log(res.data);
             if(!res.data.length){
                 this.setState({ message: "No needs for this organization." })
             }
-            this.setState({ needs: res.data.needs });
+            this.setState({ needs: res.data });
 
         })
         .catch(err => console.log(err));
@@ -45,35 +42,16 @@ class Needs extends Component {
         });
     };
 
-    validateForm = () =>{
-        const { need } = this.state;
-        return (need );
-    }
-
-    clear =() =>{
-        this.setState({
-            need: "",
-            comment: ""
-        })
-    }
-
     handleFormSubmit = event => {
         event.preventDefault();
-        const { need, comment } = this.state;
-
-        if (this.validateForm()) {
             API.newNeed({
-                orgId: this.state.orgId,
-                need: need,
-                comment: comment
+                orgId: this.state.orgId
             })
                 .then(res => {
-                    this.clear();
                     this.addConfirm();
-                    this.loadNeeds();
                 })
                 .catch(err => console.log(err));
-        }
+        
     };
 
     deleteNeed=(needId)=>{
@@ -91,7 +69,7 @@ class Needs extends Component {
         return (
             <div className="container" id="needs">
                 <Row>
-                    <Col s={12}>
+                    <Col s={6}>
                         <form>
                             <CardPanel>
 
@@ -129,7 +107,7 @@ class Needs extends Component {
                             </CardPanel>
                         </form>
                     </Col>
-                    <Col s={12}>
+                    <Col s={6}>
                         
                             {this.state.needs.length ? (
                                 <Collection>

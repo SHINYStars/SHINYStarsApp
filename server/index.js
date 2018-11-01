@@ -1,3 +1,4 @@
+require('dotenv').config();
 // Initialize Express
 const express = require('express');
 const app = express();
@@ -21,7 +22,7 @@ const bodyParser = require('body-parser'); // Helps us extract features from req
 
 class App {
     constructor() {
-        this.port = process.env.PORT || 3090;
+        this.port = process.env.PORT || 3080;
         this.server = http.createServer(app);
         //this.initDb();
         this.initMiddleware();
@@ -43,6 +44,11 @@ class App {
                 saveUninitialized: true }));
         app.use(passport.initialize());
         app.use(passport.session());
+
+        app.get('*', function (req, res) {
+            const index = path.join(__dirname, 'build', 'index.html');
+            res.sendFile(index);
+          });
 
         app.use(routes);
 

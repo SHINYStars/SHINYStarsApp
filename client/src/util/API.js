@@ -34,6 +34,10 @@ export default {
     return axios.put("/api/organization/edit", organization)
   },
 
+  volunteerSignup: function (volunteer) {
+    return axios.post("/api/volunteer/signup", volunteer);
+  },
+
   newNeed: function (need) {
     return axios.post("/api/needs/new", need);
   },

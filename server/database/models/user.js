@@ -12,7 +12,10 @@ const userSchema = new Schema({
   phonenumber2: { type: String, required: false },
 
   email: { type: String, unique: true, match: [/.+@.+\..+/, "Please enter a valid e-mail address"] },
-  organization: { type: Number, default: 0, required: true }
+  organization: { type: Number, default: 0, required: true },
+  shinylist: [
+    { type: Schema.Types.ObjectId, ref: 'Need' }
+  ]
 })
 
 userSchema.methods = {

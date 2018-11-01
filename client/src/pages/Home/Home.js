@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { CardPanel, Button, Col, Collection, CollectionItem } from 'react-materialize';
+import { CardPanel, Button, Col, Card } from 'react-materialize';
 import './Home.css';
 import API from '../../util/API';
 import SweetAlert from 'sweetalert-react';
@@ -11,7 +11,7 @@ class Home extends Component {
         search: "",
         organizations: [],
         message: "",
-        error:false
+        error: false
     };
 
     handleChange = event => {
@@ -26,17 +26,17 @@ class Home extends Component {
 
         console.log('handleSearch');
         const filters = this.state.search;
-        if(filters!==""){
-        API.search({ filters }).then(res => {
-            if (!res.data.length) {
-                this.setState({ message: "No NPO's in your location." })
-            }
-            this.setState({ organizations: res.data });
-        })
-            .catch(err => console.log(err));
-    }else{
-        this.setState({ error:true});
-    }
+        if (filters !== "") {
+            API.search({ filters }).then(res => {
+                if (!res.data.length) {
+                    this.setState({ message: "No NPO's in your location." })
+                }
+                this.setState({ organizations: res.data });
+            })
+                .catch(err => console.log(err));
+        } else {
+            this.setState({ error: true });
+        }
     }
 
     render() {
@@ -56,30 +56,34 @@ class Home extends Component {
                         </form>
                     </div>
                     <div className="container list-org">
-                    {this.state.organizations.length ? (
-                                <Collection>
-                                    {this.state.organizations.map(organization => (
-                                        <CollectionItem
-                                            key={organization._id}
-                                            _id={organization._id} ><a href={"/needs/"+organization._id} target="blank">{organization.orgName}</a></CollectionItem>
-                                    ))}
-                                </Collection>
-                            ) : (
-                                    <h2 className="text-center">{this.state.message}</h2>
-                                )}
-                                </div>
+                        {this.state.organizations.length ? (
+
+                            this.state.organizations.map(organization => (
+                                <Card key={organization._id} title={organization.orgName}
+                                    reveal={<p>{organization.website}</p>}>
+                                    
+                                    <a href={"/needs/" + organization._id}>See Needs</a>
+                                        
+                                </Card>
+
+                            ))
+
+                        ) : (
+                                <h2 className="text-center">{this.state.message}</h2>
+                            )}
+                    </div>
                 </CardPanel>
                 <SweetAlert
-                show={this.state.error}
-                type='error'
-                title='Error'
-                text='Please enter valid City,State or zip'
-                onConfirm={() => {
-                  this.setState({
-                    error: false
-                  });
-                }}
-              />
+                    show={this.state.error}
+                    type='error'
+                    title='Error'
+                    text='Please enter valid City,State or zip'
+                    onConfirm={() => {
+                        this.setState({
+                            error: false
+                        });
+                    }}
+                />
             </div>
         );
     }

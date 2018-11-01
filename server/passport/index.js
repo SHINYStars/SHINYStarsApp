@@ -1,12 +1,12 @@
 var passport = require("passport");
 var LocalStrategy = require("./localStrategy");
-var User = require("../database/models/user").User;
+var User = require("../database/models").User;
 
 // called on login, saves the id to session req.session.passport.user = {id:'..'}
 passport.serializeUser((user, done) => {
 	console.log('*** serializeUser called, user: ')
-	console.log(user) // the whole raw user object!
-	console.log('---------')
+	//console.log(user) // the whole raw user object!
+	//console.log('---------')
 	done(null, { _id: user._id })
 })
 
@@ -17,8 +17,8 @@ passport.deserializeUser((id, done) => {
 		{ _id: id },
 		(err, user) => {
 			console.log('*** Deserialize user, user:')
-			console.log(user)
-			console.log('--------------')
+			//console.log(user)
+			//console.log('--------------')
 			done(null, user)
 		}
 	)

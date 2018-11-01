@@ -5,7 +5,7 @@ router.route("/signup")
     .post(organizationController.create);
 
 router.route("/get/:id")
-    .get(organizationController.get);
+    .get(organizationController.getOne);
 
 router.route("/edit/")
     .put(organizationController.update);

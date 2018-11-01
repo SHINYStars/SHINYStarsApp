@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const db = require('../database/models/shinylist');
+const db = require('../database/models');
 
 // Define your database controllers here!
 // Ex: Create, Update, Delete, etc.

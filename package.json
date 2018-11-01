@@ -9,6 +9,7 @@
     "express-session": "^1.15.6",
     "mongoose": "^5.3.1",
     "morgan": "^1.9.1",
+    "nodeenv": "^1.0.0",
     "nodemailer": "^4.6.8",
     "nodemon": "^1.18.4",
     "passport": "^0.4.0",
@@ -21,15 +22,15 @@
     "babel-preset-stage-0": "^6.24.1",
     "concurrently": "^4.0.0"
   },
+  
   "scripts": {
     "setup": "yarn install && cd client && yarn install",
-    "build": "babel src -d lib",
+    "build": "node internals/scripts/build.js",
     "deploy": "yarn build && yarn checkout",
     "checkout": "git checkout -b deploy && yarn run add",
     "add": "git add -f client/build && yarn run commit",
     "commit": "git commit -m \"deploy\" && yarn run push",
     "push": "git push -f heroku deploy:master && yarn run master",
-    "seed": "node scripts/seedDB.js",
     "master": "git checkout master && yarn run delete",
     "delete": "git branch -D deploy",
     "start": "concurrently --kill-others-on-fail \"yarn run server\" \"yarn run client\"",

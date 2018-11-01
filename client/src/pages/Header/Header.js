@@ -4,7 +4,7 @@ import './Header.css';
 import API from '../../util/API';
 
 const Img = <div >
-<img src='../images/shinystars-logo-5.png' alt="logo" width="60" height="60" className="logo-img" /><span className="app-name">SHINY Stars</span></div>;
+<img src='../images/shinystars-logo-6.png' alt="logo" width="60" height="60" className="logo-img" /><span className="app-name">SHINY Stars</span></div>;
 
 class Header extends Component {
 
@@ -24,7 +24,7 @@ class Header extends Component {
             email = this.props.user.email;
         }
         return (
-            <header>
+            <header className="header-nav">
                 {(this.props.user) ? (
                     <SideNav
                         trigger={Img}
@@ -42,6 +42,7 @@ class Header extends Component {
                         <SideNavItem divider />
                         <SideNavItem href="/">Home</SideNavItem>
                         <SideNavItem href={'/shinylist/' + userId}>SHINYList</SideNavItem>
+                        <SideNavItem href="/volunteer">Volunteer</SideNavItem>
                         <SideNavItem href="#!logout" onClick={() => this.logout()}>Logout</SideNavItem>
                         <SideNavItem href="/contact">Contact</SideNavItem>
                     </SideNav>
@@ -50,6 +51,7 @@ class Header extends Component {
                             trigger={Img}
                             options={{ closeOnClick: true }}
                         >
+                            <SideNavItem href="/volunteer">Volunteer</SideNavItem>
                             <SideNavItem href="/login">Login / Signup</SideNavItem>
                             <SideNavItem href="/contact">Contact</SideNavItem>
                         </SideNav>
