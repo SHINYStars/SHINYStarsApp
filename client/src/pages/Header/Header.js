@@ -4,7 +4,7 @@ import './Header.css';
 import API from '../../util/API';
 
 const Img = <div >
-<img src='../images/shinystars-logo-6.png' alt="logo" width="60" height="60" className="logo-img" /><span className="app-name">SHINY Stars</span></div>;
+<img src='../../images/shinystars-logo-6.png' alt="logo" width="60" height="60" className="logo-img" /><span className="app-name">SHINY Stars</span></div>;
 
 class Header extends Component {
 
@@ -38,7 +38,7 @@ class Header extends Component {
                             }}
                         />
                         <SideNavItem href="/user/edit">Account</SideNavItem>
-                        <SideNavItem href="/organization/edit/org">Organization</SideNavItem>
+                        <SideNavItem href={"/organization/edit/"+userId}>Organization</SideNavItem>
                         <SideNavItem divider />
                         <SideNavItem href="/">Home</SideNavItem>
                         <SideNavItem href={'/shinylist/' + userId}>SHINYList</SideNavItem>

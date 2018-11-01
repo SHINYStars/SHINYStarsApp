@@ -29,8 +29,9 @@ export default {
     return axios.post("/api/organization/signup", organization)
   },
 
-  getOrganization: function (user) {
-    return axios.get("/api/organization/get/" + user._id)
+  getOrganization: function (userId) {
+    console.log("userID",userId);
+    return axios.get("/api/organization/get/" + userId);
   },
 
   updateOrganization: function (organization) {

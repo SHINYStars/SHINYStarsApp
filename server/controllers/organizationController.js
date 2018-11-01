@@ -20,7 +20,7 @@ module.exports = {
   },
 
   getOne: function (req, res) {
-    db.Organization.findOne({ userId: req.params.id })
+    db.Organization.find({ userId: req.params.id })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

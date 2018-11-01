@@ -76,7 +76,7 @@ class App extends Component {
             <Route exact path="/volunteer" component={Volunteer} />
             <Route exact path="/donateinkind" component={DonateInKind} />
             <Route exact path="/organization/:user" component={Organization} />
-            <Route exact path="/organization/edit/org" component={() => <OrganizationEdit user={this.state.user} />} />
+            <Route exact path="/organization/edit/:userId" render={(props) => <OrganizationEdit user={this.state.user} {...props} />} />
             <Route exact path="/signup/:org" component={User} />
             <Route exact path="/needs/:orgId" component={Needs}/>
             <Route exact path="/orgneeds/:orgId/" render={(props)=><OrganizationNeeds user={this.state.user} {...props}/>}/>
