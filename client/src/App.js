@@ -14,6 +14,7 @@ import User from './pages/User/User';
 import Needs from './pages/Needs/Needs';
 import OrganizationNeeds from './pages/OrganizationNeeds/OrganizationNeeds';
 import VolunteerEmail from './pages/VolunteerEmail/VolunteerEmail';
+import ShinyList from './pages/ShinyList/ShinyList';
 
 import API from './util/API';
 import { request } from 'https';
@@ -81,6 +82,9 @@ class App extends Component {
             <Route exact path="/needs/:orgId" component={Needs}/>
             <Route exact path="/orgneeds/:orgId/" render={(props)=><OrganizationNeeds user={this.state.user} {...props}/>}/>
             <Route exact path ="/volunteerEmail" component={VolunteerEmail} />
+            <Route exact path ="/shinylist/:userId" component={ShinyList} />
+
+            
           </Switch>
         </Router>
         <hr/>

@@ -11,16 +11,17 @@ module.exports = {
     console.log("userId", req.body.userId);
     // View the added result in the console
     db.User.findByIdAndUpdate(req.body.userId, { $push: { shinylist: req.body.needId } }, { new: true }, function (err, obj) {
-        if (err) return handleError(err);
-        console.log(obj);
-        res.json(obj);
+      if (err) return handleError(err);
+      console.log(obj);
+      res.json(obj);
     });
   },
 
-  get:function(req,res){
-    db.ShinyList.find({ userId: req.params.userId })
-    .then(dbModel => res.json(dbModel))
-    .catch(err => res.status(422).json(err));
+  get: function (req, res) {
+
+    db.User.findById({ _id: req.params.id }).populate('shinylist')
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   }
 
 

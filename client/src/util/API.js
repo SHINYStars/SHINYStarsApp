@@ -56,5 +56,9 @@ export default {
 
   addNeedToShinyList:function(shinylist){
     return axios.post("/api/shinylist/",shinylist);
+  },
+
+  getShinyList:function(userId){
+    return axios.get("/api/shinylist/"+userId);
   }
 };

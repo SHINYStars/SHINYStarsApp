@@ -63,7 +63,6 @@ class OrganizationNeeds extends Component {
             })
                 .then(res => {
                     this.addConfirm();
-                    this.props.history.push("/shinylist/"+this.state.userInfo);
                 })
                 .catch(err => console.log(err));
             }else{
@@ -105,6 +104,7 @@ class OrganizationNeeds extends Component {
                                         this.setState({
                                             confirm: false
                                         });
+                                        this.props.history.push("/shinylist/"+this.state.userInfo);
                                     }}
                                 />
                                 <SweetAlert

@@ -18,10 +18,12 @@ class Header extends Component {
         let userId = "";
         let fullName = "";
         let email = "";
+        let isOrg=0;
         if (this.props.user) {
             userId = this.props.user._id;
             fullName = this.props.user.firstName + " " + this.props.user.lastName;
             email = this.props.user.email;
+            isOrg=this.props.user.organization;
         }
         return (
             <header className="header-nav">
@@ -38,7 +40,10 @@ class Header extends Component {
                             }}
                         />
                         <SideNavItem href="/user/edit">Account</SideNavItem>
-                        <SideNavItem href={"/organization/edit/"+userId}>Organization</SideNavItem>
+                        {isOrg?
+                        (<SideNavItem href={"/organization/edit/"+userId}>Organization</SideNavItem>):
+                        ""
+                        }
                         <SideNavItem divider />
                         <SideNavItem href="/">Home</SideNavItem>
                         <SideNavItem href={'/shinylist/' + userId}>SHINYList</SideNavItem>

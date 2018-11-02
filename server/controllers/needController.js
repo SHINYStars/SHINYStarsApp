@@ -32,7 +32,6 @@ module.exports = {
     },
 
     getNeeds: function (req, res) {
-        console.log("In needs:");
         let organization;
         db.Organization.findById(req.params.orgId).populate('needs')
             .then(dbModel =>{
