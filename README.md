@@ -6,7 +6,7 @@ The organizations will create their profile and add the needs/ necessities for t
 
 ## Environment: 
 
-* Heroku
+* Digital Ocean
 * NodeJS
 * ExpressJS
 * ReactJS
@@ -14,8 +14,8 @@ The organizations will create their profile and add the needs/ necessities for t
 * Mongoose
 * PassportJS
 * Nodemailer
-* Bootstrap CSS
-* Sweet Alerts CSS
+* Materialize CSS
+* Sweet Alerts
 
 File structure overview:
 - client: contains your React front-end.
