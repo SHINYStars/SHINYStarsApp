@@ -1,5 +1,5 @@
-const env={
-    VOLUNTEEER_EMAIL : /* volunteer email */, 
-   // ENCRYPTED_PASSWORD : 'dGVtcEAxMjM0',
+const env2={
     SITE : 'shinystars.org'
+   // ENCRYPTED_PASSWORD : 'dGVtcEAxMjM0',
+    
   }

@@ -1,5 +1,5 @@
 //Environment Config
-const env = {
+/*const env = {
     production: {
       name: 'production',
       port: 4000
@@ -13,7 +13,7 @@ const env = {
       port: 4000
     }
 
-  };
+};*/
   const env={
     GMAIL_USERNAME :'shinystarsteam@gmail.com',
     ENCRYPTED_PASSWORD : 'dGVtcEAxMjM0',
