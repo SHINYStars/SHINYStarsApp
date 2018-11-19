@@ -5,7 +5,9 @@ import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css';
 import { Col, CardPanel, Button } from 'react-materialize';
 
+
 class UserEdit extends Component {
+  
 
     state = {
         isLoading: false,
@@ -20,16 +22,20 @@ class UserEdit extends Component {
         error: false
       };
 
+      setUserId = () => {
+        this.setState({ userId: this.props.match.params.userId });
+    }
+    
       componentDidMount() {
-          if (this.props.user) {
-              API.getUser(this.props.user)
-                .then(res => this.userInfo(res))
-                .catch(err => console.log(err));
-          }
+          this.setUserId();
+          API.getUser(this.props.match.params.userId)
+                .then(res => {this.userInfo(res.data);
+                })
+
       }
 
-      userInfo = (res) => {
-          const user = res.data;
+      userInfo = (data) => {
+          const user = data;
           this.setState({
           firstName: user.firstName,
           lastName: user.lastName,
@@ -87,6 +93,8 @@ class UserEdit extends Component {
 render() {
     console.log(this.props.match.params.org);
     console.log(this.state.organization);
+    console.log(this.props.match.user);
+    
 
 
     return (
@@ -137,7 +145,7 @@ render() {
                 onChange={this.handleChange} />
 
               <Button
-                disabled={!this.validateForm()}
+                //disabled={!(this.validateForm())}
                 onClick={this.handleFormSubmit}>
                 Update User</Button>
               <a href="/user">Cancel</a>

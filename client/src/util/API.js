@@ -17,8 +17,8 @@ export default {
   getUser: function () {
     return axios.get("/api/user/");
   },
-  updateUser: function () {
-    return axios.get("/api/user/edit")
+  updateUser: function (user) {
+    return axios.get("/api/user/edit", user)
   },
 
   search: function (filter) {

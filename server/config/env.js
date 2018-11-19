@@ -11,14 +11,18 @@ const env = {
     test: {
       name: 'test',
       port: 4000
-    }
+    },
 
-  };
-  const env={
     GMAIL_USERNAME :'shinystarsteam@gmail.com',
     ENCRYPTED_PASSWORD : 'dGVtcEAxMjM0',
     SITE : 'shinystars.org'
-  }
+
+  };
+  /* const env={
+    GMAIL_USERNAME :'shinystarsteam@gmail.com',
+    ENCRYPTED_PASSWORD : 'dGVtcEAxMjM0',
+    SITE : 'shinystars.org'
+  } */
   
   // gmail username (e.g. 'you@gmail.com')
   //env[process.env.NODE_ENV].GMAIL_USERNAME = 'shinystarsteam@gmail.com';

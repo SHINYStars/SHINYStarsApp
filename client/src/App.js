@@ -11,6 +11,7 @@ import Volunteer from './pages/Volunteer/Volunteer';
 import Organization from './pages/Organization/Organization';
 import OrganizationEdit from './pages/OrganizationEdit/OrganizationEdit';
 import User from './pages/User/User';
+import UserEdit from './pages/UserEdit/UserEdit';
 import Needs from './pages/Needs/Needs';
 import OrganizationNeeds from './pages/OrganizationNeeds/OrganizationNeeds';
 import VolunteerEmail from './pages/VolunteerEmail/VolunteerEmail';
@@ -53,7 +54,7 @@ class App extends Component {
 
         this.setState({
           loggedIn: true,
-          user: response.data.user
+          user: response.data.user          
         })
       } else {
         console.log('Get user: no user');
@@ -76,6 +77,7 @@ class App extends Component {
             <Route exact path="/contact" component={Contact} />
             <Route exact path="/volunteer" component={Volunteer} />
             <Route exact path="/donateinkind" component={DonateInKind} />
+            <Route exact path="/user/edit" render={(props) => <UserEdit user={this.state.user} {...props} />} />
             <Route exact path="/organization/:user" component={Organization} />
             <Route exact path="/organization/edit/:userId" render={(props) => <OrganizationEdit user={this.state.user} {...props} />} />
             <Route exact path="/signup/:org" component={User} />
