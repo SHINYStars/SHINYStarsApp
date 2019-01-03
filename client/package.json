@@ -12,7 +12,7 @@
     "sweetalert-react": "^0.4.11"
   },
   "scripts": {
-    "start": "PORT=80 react-scripts start",
+    "start": "PORT=8080 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -27,5 +27,5 @@
     "not op_mini all"
   ],
   "proxy": "http://localhost:3090",
-  "homepage": "https://shinystars.herokuapp.com"
+  "homepage": "https://shinystars.org"
 }
