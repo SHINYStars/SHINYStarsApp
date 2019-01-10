@@ -45,10 +45,10 @@ class App {
         app.use(passport.initialize());
         app.use(passport.session());
 
-        /*app.get('*', function (req, res) {
+        app.get('*', function (req, res) {
             const index = path.join(__dirname, '../client/build', 'index.html');
             res.sendFile(index);
-          });*/
+          });
 
         app.use(routes);
 
